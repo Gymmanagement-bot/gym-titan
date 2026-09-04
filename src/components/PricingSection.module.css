@@ -1,0 +1,102 @@
+/* Pricing Section Animations */
+
+@keyframes floatParticle {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes priceChange {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotateX(20deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.pricingCard {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+}
+
+.pricingCard:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 30px 80px rgba(255, 107, 0, 0.4);
+}
+
+.popularBadge {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.priceValue {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.billingToggle {
+  transition: all 0.3s ease;
+}
+
+.floatingDot {
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+.sparkleEffect {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.featureCheckmark {
+  stroke-dasharray: 100;
+  animation: checkmark 0.5s ease forwards;
+}

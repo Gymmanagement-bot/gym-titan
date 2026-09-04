@@ -1,0 +1,146 @@
+/* Gallery Section Animations */
+
+@keyframes galleryCardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes particleMove {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes iconRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes bentoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes sparkleGlow {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes categoryBadge {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes glowExpand {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.galleryCard {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.galleryCard:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 25px 70px rgba(255, 107, 0, 0.35);
+}
+
+.featuredCard {
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.featuredCard:hover {
+  transform: scale(1.02) translateY(-8px);
+}
+
+.galleryIcon {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.galleryCard:hover .galleryIcon {
+  transform: rotate(12deg) scale(1.15);
+}
+
+.categoryBadge {
+  animation: categoryBadge 2s ease-in-out infinite;
+}
+
+.particleEffect {
+  animation: particleMove 3s ease-out infinite;
+}
+
+.sparkleParticle {
+  animation: sparkleGlow 2s ease-in-out infinite;
+}
+
+.backgroundIcon {
+  transition: transform 0.6s ease;
+}
+
+.galleryCard:hover .backgroundIcon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.exploreButton {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.exploreButton:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(255, 107, 0, 0.5);
+}
+
+.featureHighlight {
+  transition: all 0.4s ease;
+}
+
+.featureHighlight:hover {
+  transform: translateY(-12px) scale(1.08);
+}

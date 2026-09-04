@@ -1,0 +1,415 @@
+/* How It Works Page Styles */
+
+.container {
+  min-height: 100vh;
+  background: #0a0a0f;
+}
+
+.heroSection {
+  position: relative;
+  padding-top: 7rem;
+  padding-bottom: 3rem;
+  overflow: hidden;
+}
+
+.backgroundGlow {
+  position: absolute;
+  inset: 0;
+}
+
+.orangeGlow {
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(249, 115, 22, 0.2);
+  border-radius: 9999px;
+  filter: blur(150px);
+}
+
+.cyanGlow {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(6, 182, 212, 0.2);
+  border-radius: 9999px;
+  filter: blur(150px);
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+}
+
+.badgeDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #f97316;
+  border-radius: 9999px;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.badgeText {
+  color: #fb923c;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.headingGradient {
+  background: linear-gradient(to right, #f97316, #fb923c, #fdba74);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.description {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.stepsSection {
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+.stepsContainer {
+  position: relative;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.stepWrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 10rem;
+}
+
+.stepWrapper:last-child {
+  margin-bottom: 0;
+}
+
+/* Connector Lines - L-shaped */
+
+/* Step 1 to Step 2: Right → Down → Left */
+.stepWrapper:nth-child(1)::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: calc(100% + 10rem);
+  background: linear-gradient(to bottom, rgba(249, 115, 22, 0.5), rgba(6, 182, 212, 0.5));
+  right: calc(50% - 1px);
+  top: 50%;
+  z-index: 1;
+}
+
+.stepWrapper:nth-child(1)::after {
+  content: '';
+  position: absolute;
+  width: 8rem;
+  height: 2px;
+  background: linear-gradient(to right, rgba(249, 115, 22, 0.5), rgba(249, 115, 22, 0.3));
+  right: 50%;
+  top: 50%;
+  z-index: 1;
+}
+
+/* Step 2 to Step 3: Left → Down → Right */
+.stepWrapper:nth-child(2)::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: calc(100% + 10rem);
+  background: linear-gradient(to bottom, rgba(6, 182, 212, 0.5), rgba(14, 165, 233, 0.5));
+  left: calc(50% - 1px);
+  top: 50%;
+  z-index: 1;
+}
+
+.stepWrapper:nth-child(2)::after {
+  content: '';
+  position: absolute;
+  width: 8rem;
+  height: 2px;
+  background: linear-gradient(to left, rgba(6, 182, 212, 0.5), rgba(6, 182, 212, 0.3));
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+}
+
+/* Step 3 to Step 4: Right → Down → Left */
+.stepWrapper:nth-child(3)::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: calc(100% + 10rem);
+  background: linear-gradient(to bottom, rgba(14, 165, 233, 0.5), rgba(249, 115, 22, 0.5));
+  right: calc(50% - 1px);
+  top: 50%;
+  z-index: 1;
+}
+
+.stepWrapper:nth-child(3)::after {
+  content: '';
+  position: absolute;
+  width: 8rem;
+  height: 2px;
+  background: linear-gradient(to right, rgba(14, 165, 233, 0.5), rgba(14, 165, 233, 0.3));
+  right: 50%;
+  top: 50%;
+  z-index: 1;
+}
+
+/* No line after last step */
+.stepWrapper:nth-child(4)::before,
+.stepWrapper:nth-child(4)::after {
+  display: none;
+}
+
+.stepCard {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 32rem;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* Alternate positioning */
+.stepWrapper:nth-child(odd) .stepCard {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.stepWrapper:nth-child(even) .stepCard {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.stepCard:hover {
+  border-color: rgba(249, 115, 22, 0.5);
+  transform: translateY(-4px);
+}
+
+.stepNumber {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* Position number on left for odd steps */
+.stepWrapper:nth-child(odd) .stepNumber {
+  left: -1rem;
+  top: -1rem;
+}
+
+/* Position number on right for even steps */
+.stepWrapper:nth-child(even) .stepNumber {
+  right: -1rem;
+  top: -1rem;
+}
+
+.stepContent {
+  padding-left: 0;
+}
+
+.stepIcon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.stepTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.stepDescription {
+  color: #9ca3af;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.125rem;
+}
+
+.glowEffect {
+  position: absolute;
+  inset: -1px;
+  border-radius: 1.5rem;
+  filter: blur(16px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.stepCard:hover .glowEffect {
+  opacity: 0.2;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .stepWrapper {
+    margin-bottom: 4rem;
+  }
+
+  .stepWrapper::before,
+  .stepWrapper::after {
+    display: none;
+  }
+  
+  .stepWrapper:nth-child(odd) .stepCard,
+  .stepWrapper:nth-child(even) .stepCard {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .stepNumber {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  .stepWrapper:nth-child(odd) .stepNumber,
+  .stepWrapper:nth-child(even) .stepNumber {
+    left: 0;
+    right: auto;
+    top: 0;
+  }
+}
+
+.ctaSection {
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #ea580c, #f97316);
+  color: white;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.ctaButton:hover {
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+}
+
+.arrowIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+@media (min-width: 640px) {
+  .contentWrapper {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading {
+    font-size: 3.75rem;
+  }
+  
+  .contentWrapper {
+    padding: 0 2rem;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
