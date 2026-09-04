@@ -20,7 +20,7 @@ export default function Navbar() {
     { name: 'Features', href: '/features' },
     { name: 'About', href: '/about' },
     { name: 'How It Works', href: '/how-it-works' },
-    // { name: 'Testimonials', href: '#testimonials' },
+    { name: 'Contact', href: '/contact' },
     { name: 'Pricing', href: '/pricing' },
   ];
 
