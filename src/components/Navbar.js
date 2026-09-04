@@ -63,8 +63,16 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center space-x-3">
+            <Link
+              href="https://oracleapex.com/ords/f?p=295812:LOGIN:15383743297912"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 text-gray-300 font-semibold rounded-lg hover:text-orange-500 hover:bg-white/5 transition-all duration-300"
+            >
+              Sign In
+            </Link>
             <Link 
               href="#pricing"
               className="relative inline-block px-6 py-2.5 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg overflow-hidden group"
@@ -115,6 +123,15 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+          <Link
+            href="https://oracleapex.com/ords/f?p=295812:LOGIN:15383743297912"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-4 py-3 text-gray-300 hover:text-orange-500 hover:bg-orange-500/10 rounded-lg transition-all duration-300 text-center border border-white/20"
+          >
+            Sign In
+          </Link>
           <Link
             href="#pricing"
             onClick={() => setMobileMenuOpen(false)}
