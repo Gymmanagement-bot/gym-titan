@@ -38,8 +38,8 @@ export default function TestimonialsSection() {
 
   const testimonials = [
     {
-      name: 'Rajesh Kumar',
-      role: 'Owner - Fitness First Gym, Mumbai',
+      name: 'Ahmed Raza',
+      role: 'Owner - Fitness First Gym, Lahore',
       rating: 5,
       text: 'Gym Titan transformed how I run my gym. Automated payments saved me 20+ hours monthly and reduced payment delays by 90%. Best investment for my business!',
       achievement: 'Revenue +35%',
@@ -47,8 +47,8 @@ export default function TestimonialsSection() {
       iconPath: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
     },
     {
-      name: 'Priya Sharma',
-      role: 'Owner - PowerFit Studio, Delhi',
+      name: 'Fatima Malik',
+      role: 'Owner - PowerFit Studio, Karachi',
       rating: 5,
       text: 'Managing 3 branches was a nightmare until Gym Titan. Now I can track everything from one dashboard. Member renewals increased by 40% with automated reminders!',
       achievement: '3 Branches Managed',
@@ -56,8 +56,8 @@ export default function TestimonialsSection() {
       iconPath: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
     },
     {
-      name: 'Arjun Mehta',
-      role: 'Owner - Iron Paradise, Bangalore',
+      name: 'Usman Tariq',
+      role: 'Owner - Iron Paradise, Islamabad',
       rating: 5,
       text: 'The analytics feature is a game-changer! I can see exactly which packages work best and when members are most active. Made data-driven decisions that doubled my profit.',
       achievement: 'Profit Doubled',
@@ -65,8 +65,8 @@ export default function TestimonialsSection() {
       iconPath: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
     },
     {
-      name: 'Neha Gupta',
-      role: 'Owner - FitZone Gym, Pune',
+      name: 'Ayesha Noor',
+      role: 'Owner - FitZone Gym, Faisalabad',
       rating: 5,
       text: 'Setting up was so easy! The team helped migrate all my data in just 2 days. Members love the app for booking classes and tracking their progress. Highly recommend!',
       achievement: 'Setup in 2 Days',
@@ -74,8 +74,8 @@ export default function TestimonialsSection() {
       iconPath: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
     },
     {
-      name: 'Vikram Singh',
-      role: 'Owner - Muscle Factory, Hyderabad',
+      name: 'Bilal Hussain',
+      role: 'Owner - Muscle Factory, Rawalpindi',
       rating: 5,
       text: 'I was skeptical about software, but Gym Titan proved me wrong. The WhatsApp reminders alone recovered 50+ lapsed memberships. Support team is incredibly helpful!',
       achievement: '+50 Renewals',

@@ -280,3 +280,329 @@
     opacity: 0.5;
   }
 }
+
+/* ─── Error Banner ─────────────────────────────────────────────────────────── */
+
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 0.625rem;
+  color: #fca5a5;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── Popup Overlay ────────────────────────────────────────────────────────── */
+
+.popupOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  animation: overlayFadeIn 0.25s ease forwards;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Popup Card ───────────────────────────────────────────────────────────── */
+
+.popupCard {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a2e, #0f0f1e);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  margin: 1rem;
+  overflow: hidden;
+  animation: cardPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes cardPopIn {
+  from { opacity: 0; transform: scale(0.85) translateY(20px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+.successCard {
+  border-color: rgba(249, 115, 22, 0.5);
+}
+
+/* ─── Glow ─────────────────────────────────────────────────────────────────── */
+
+.popupGlow {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 220px;
+  background: rgba(249, 115, 22, 0.15);
+  border-radius: 9999px;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.successGlow {
+  background: rgba(249, 115, 22, 0.2);
+}
+
+/* ─── Spinner (submitting) ─────────────────────────────────────────────────── */
+
+.spinnerWrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+}
+
+.spinnerOuter {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 3px solid rgba(249, 115, 22, 0.15);
+  border-top-color: #f97316;
+  animation: spinCW 1s linear infinite;
+}
+
+.spinnerInner {
+  position: absolute;
+  inset: 10px;
+  border-radius: 9999px;
+  border: 3px solid rgba(249, 115, 22, 0.1);
+  border-bottom-color: #fb923c;
+  animation: spinCCW 0.75s linear infinite;
+}
+
+.spinnerIcon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spinCW  { to { transform: rotate(360deg);  } }
+@keyframes spinCCW { to { transform: rotate(-360deg); } }
+
+/* ─── Dots ─────────────────────────────────────────────────────────────────── */
+
+.dotsRow {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #f97316;
+  border-radius: 9999px;
+  animation: dotBounce 1.2s ease-in-out infinite;
+}
+
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1);   opacity: 1;   }
+}
+
+/* ─── Success icon ─────────────────────────────────────────────────────────── */
+
+.successIconWrapper {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1.5rem;
+}
+
+.successIconRing {
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 2px solid rgba(249, 115, 22, 0.4);
+  animation: ringPulse 2s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.4; }
+  50%      { transform: scale(1.08); opacity: 1;   }
+}
+
+.successIconBg {
+  width: 84px;
+  height: 84px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #ea580c, #f97316);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.45);
+  animation: iconBounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes iconBounceIn {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+/* ─── Popup text ───────────────────────────────────────────────────────────── */
+
+.popupTitle {
+  color: #fff;
+  font-size: 1.375rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.3px;
+}
+
+.successMessage {
+  color: #e5e7eb;
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.popupSubtitle {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.highlight {
+  color: #fb923c;
+  font-weight: 700;
+}
+
+/* ─── Success divider & button ─────────────────────────────────────────────── */
+
+.successDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 1.5rem 0;
+}
+
+.successBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #ea580c, #f97316);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35);
+}
+
+.successBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(249, 115, 22, 0.5);
+}
+
+/* ─── Custom Select Dropdown ───────────────────────────────────────────────── */
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+.selectTrigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+  text-align: left;
+}
+
+.selectTrigger:hover,
+.selectTriggerOpen {
+  border-color: #f97316;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.selectChevron {
+  flex-shrink: 0;
+  color: #9ca3af;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.selectChevronOpen {
+  transform: rotate(180deg);
+  color: #f97316;
+}
+
+.selectList {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  margin: 0;
+  padding: 0.375rem;
+  list-style: none;
+  background: #1a1a2e;
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: 0.625rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(249, 115, 22, 0.1);
+  animation: selectSlideDown 0.18s ease forwards;
+}
+
+@keyframes selectSlideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.selectOption {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.875rem;
+  border-radius: 0.4rem;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.selectOption:hover {
+  background: rgba(249, 115, 22, 0.12);
+  color: #fff;
+}
+
+.selectOptionActive {
+  background: rgba(249, 115, 22, 0.18);
+  color: #fb923c;
+  font-weight: 600;
+}
+
+.selectOptionActive:hover {
+  background: rgba(249, 115, 22, 0.25);
+  color: #fb923c;
+}

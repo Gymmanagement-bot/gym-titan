@@ -2,13 +2,25 @@
 
 import { useEffect, useState } from 'react';
 
+// Generate stable particle data on the client only
+function generateParticles(count) {
+  return Array.from({ length: count }, () => ({
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    animationDelay: `${Math.random() * 3}s`,
+    animationDuration: `${3 + Math.random() * 2}s`,
+  }));
+}
+
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [particles, setParticles] = useState([]);
 
   useEffect(() => {
     setIsVisible(true);
-    
+    setParticles(generateParticles(15));
+
     const handleMouseMove = (e) => {
       setMousePosition({
         x: (e.clientX / window.innerWidth - 0.5) * 20,
@@ -144,15 +156,15 @@ export default function HeroSection() {
 
               {/* Energy Particles */}
               <div className="absolute inset-0">
-                {[...Array(15)].map((_, i) => (
+                {particles.map((particle, i) => (
                   <div
                     key={i}
                     className="absolute w-1.5 h-1.5 bg-orange-500 rounded-full animate-particle"
                     style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                      animationDelay: `${Math.random() * 3}s`,
-                      animationDuration: `${3 + Math.random() * 2}s`,
+                      left: particle.left,
+                      top: particle.top,
+                      animationDelay: particle.animationDelay,
+                      animationDuration: particle.animationDuration,
                     }}
                   ></div>
                 ))}
