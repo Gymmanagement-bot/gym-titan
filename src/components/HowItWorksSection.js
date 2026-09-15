@@ -140,9 +140,9 @@ export default function HowItWorksSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-400 transition-colors duration-300">
+                    <h4 className="font-bold text-white mb-4 group-hover:text-orange-400 transition-colors duration-300">
                       {step.title}
-                    </h3>
+                    </h4>
 
                     {/* Description */}
                     <p className="text-gray-300 leading-relaxed">

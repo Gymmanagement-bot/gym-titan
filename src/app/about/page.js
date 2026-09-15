@@ -50,13 +50,13 @@ export default function AboutPage() {
               <span className="text-orange-400 text-sm font-medium">ABOUT US</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              <span className="text-white">About </span>
-              <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300 bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+              <span className="text-white text-3xl md:text-4xl lg:text-5xl">About </span>
+              <span className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300 bg-clip-text text-transparent">
                 Gym Titan
               </span>
             </h1>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Empowering gym owners across India with intelligent management solutions
             </p>
           </div>
@@ -108,9 +108,9 @@ export default function AboutPage() {
             >
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { number: '1000+', label: 'Gyms Powered', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
-                  { number: '50K+', label: 'Members Managed', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
-                  { number: '₹10Cr+', label: 'Revenue Tracked', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+                  { number: '100+', label: 'Gyms Powered', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+                  { number: '100+', label: 'Members Managed', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
+                  // { number: '₹10Cr+', label: 'Revenue Tracked', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
                   { number: '98%', label: 'Satisfaction Rate', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
                 ].map((stat, idx) => (
                   <div
@@ -126,13 +126,35 @@ export default function AboutPage() {
                       <div className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent mb-2">
                         {stat.number}
                       </div>
-                      <div className="text-sm text-gray-400">{stat.label}</div>
+                      <div className="text-sm text-gray-300">{stat.label}</div>
                     </div>
                     <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-orange-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-all duration-500 -z-10"></div>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+                {/* CTA Button */}
+          <div className="text-center mt-[70px]">
+            <Link href="/contact">
+              <button className="group relative px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg overflow-hidden shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-300 hover:scale-105">
+                <span className="relative z-10 flex items-center justify-center space-x-2">
+                  <span>Start Your Free Trial</span>
+                  <svg
+                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -169,7 +191,7 @@ export default function AboutPage() {
                 title: 'Dedicated Support Team',
                 description: 'We do not just sell software — we partner with you. Our support team is available via call, WhatsApp, and email to help you succeed.',
                 icon: 'M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z',
-                color: 'from-sky-500 to-cyan-500',
+                color: 'from-orange-600 to-orange-500',
               },
             ].map((item, idx) => (
               <div key={idx} className="relative group">
@@ -180,11 +202,33 @@ export default function AboutPage() {
                     </svg>
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{item.description}</p>
+                  <p className="text-gray-300 leading-relaxed">{item.description}</p>
                 </div>
                 <div className={`absolute -inset-1 bg-gradient-to-r ${item.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-all duration-300 -z-10`}></div>
               </div>
             ))}
+          </div>
+          {/* CTA Button */}
+          <div className="text-center mt-[70px]">
+            <Link href="/contact">
+              <button className="group relative px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg overflow-hidden shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-300 hover:scale-105">
+                <span className="relative z-10 flex items-center justify-center space-x-2">
+                  <span>Start Your Free Trial</span>
+                  <svg
+                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -205,7 +249,7 @@ export default function AboutPage() {
             Powered by <span className="text-orange-500">Codeverza</span>
           </h2>
 
-          <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+          <p className="text-gray-300 text-lg mb-12 max-w-2xl mx-auto">
             Gym Titan is proudly developed by Codeverza — a team of passionate developers 
             dedicated to creating innovative software solutions that drive business growth.
           </p>
@@ -257,11 +301,11 @@ export default function AboutPage() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Transform Your <span className="text-orange-500">Gym?</span>
           </h2>
-          <p className="text-xl text-gray-400 mb-8">
-            Join 1000+ gym owners who trust Gym Titan to manage their business
+          <p className="text-xl text-gray-300 mb-8">
+            Join 100+ gym owners who trust Gym Titan to manage their business
           </p>
           <Link
-            href="/#pricing"
+            href="/contact"
             className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 group"
           >
             <span>Get Started Today</span>

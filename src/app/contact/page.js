@@ -6,12 +6,12 @@ import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
 const SUBJECTS = [
-  { value: 'general',     label: 'General Inquiry'    },
-  { value: 'sales',       label: 'Sales & Pricing'    },
-  { value: 'support',     label: 'Technical Support'  },
-  { value: 'demo',        label: 'Request a Demo'     },
-  { value: 'partnership', label: 'Partnership'        },
-  { value: 'other', label: 'Other'        },
+  { value: 'general', label: 'General Inquiry' },
+  { value: 'sales', label: 'Sales & Pricing' },
+  { value: 'support', label: 'Technical Support' },
+  { value: 'demo', label: 'Request a Demo' },
+  { value: 'partnership', label: 'Partnership' },
+  { value: 'other', label: 'Other' },
 ];
 
 // ─── Custom Dropdown ──────────────────────────────────────────────────────────
@@ -123,7 +123,7 @@ function ErrorPopup({ message, onClose }) {
     const timer = setTimeout(() => {
       onClose();
     }, 8000);
-    
+
     return () => clearTimeout(timer);
   }, [onClose]);
 
@@ -163,10 +163,10 @@ function ErrorPopup({ message, onClose }) {
             <path d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        
-        <p style={{ 
-          marginTop: '12px', 
-          fontSize: '0.75rem', 
+
+        <p style={{
+          marginTop: '12px',
+          fontSize: '0.75rem',
           color: 'rgba(255,255,255,0.5)',
           textAlign: 'center'
         }}>
@@ -184,7 +184,7 @@ function SuccessPopup({ name, onClose }) {
     const timer = setTimeout(() => {
       onClose();
     }, 5000);
-    
+
     return () => clearTimeout(timer);
   }, [onClose]);
 
@@ -226,10 +226,10 @@ function SuccessPopup({ name, onClose }) {
             <path d="M5 13l4 4L19 7" />
           </svg>
         </button>
-        
-        <p style={{ 
-          marginTop: '12px', 
-          fontSize: '0.75rem', 
+
+        <p style={{
+          marginTop: '12px',
+          fontSize: '0.75rem',
           color: 'rgba(255,255,255,0.5)',
           textAlign: 'center'
         }}>
@@ -354,8 +354,10 @@ export default function ContactPage() {
             </div>
 
             <h1 className={styles.heading}>
-              <span style={{ color: 'white' }}>Contact </span>
-              <span className={styles.headingGradient}>Gym Titan</span>
+              <span className='text-3xl md:text-4xl lg:text-5xl' style={{ color: 'white' }}>Contact </span>
+              <span className={`${styles.headingGradient} text-4xl md:text-5xl font-extrabold drop-shadow-lg`}>
+                Gym Titan
+              </span>
             </h1>
 
             <p className={styles.description}>
@@ -368,10 +370,10 @@ export default function ContactPage() {
       {/* Contact Section - Unified Card */}
       <section className={styles.contactSection}>
         <div className={styles.contentWrapper}>
-          
+
           {/* Single Unified Card */}
           <div className={styles.unifiedCard}>
-            
+
             {/* Left Side - Contact Form */}
             <div className={styles.formSection}>
               <div className={styles.formHeader}>
@@ -380,7 +382,7 @@ export default function ContactPage() {
                   Have any queries? Fill out the form below and our team will contact you soon.
                 </p>
               </div>
-              
+
               <form onSubmit={handleSubmit} className={styles.contactForm}>
                 <div className={styles.formGroup}>
                   <label htmlFor="name" className={styles.formLabel}>Full Name *</label>
@@ -458,15 +460,14 @@ export default function ContactPage() {
                     <div
                       className={styles.infoIcon}
                       style={{
-                        background: `linear-gradient(135deg, ${
-                          info.color === 'from-orange-600 to-orange-500'
+                        background: `linear-gradient(135deg, ${info.color === 'from-orange-600 to-orange-500'
                             ? '#ea580c, #f97316'
                             : info.color === 'from-cyan-500 to-blue-500'
-                            ? '#06b6d4, #3b82f6'
-                            : info.color === 'from-sky-500 to-cyan-500'
-                            ? '#0ea5e9, #06b6d4'
-                            : '#f97316, #ea580c'
-                        })`,
+                              ? '#06b6d4, #3b82f6'
+                              : info.color === 'from-sky-500 to-cyan-500'
+                                ? '#0ea5e9, #06b6d4'
+                                : '#f97316, #ea580c'
+                          })`,
                       }}
                     >
                       <svg

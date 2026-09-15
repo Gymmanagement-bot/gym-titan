@@ -124,14 +124,14 @@ export default function BenefitsSection() {
                   </div>
 
                   {/* Stat */}
-                  <div className={`text-4xl font-bold mb-3 bg-gradient-to-r ${benefit.color} bg-clip-text text-transparent`}>
+                  <div className={`text-3xl font-bold mb-3 bg-gradient-to-r ${benefit.color} bg-clip-text text-transparent`}>
                     {benefit.stat}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h4 className="text-xl font-bold text-white mb-2">
                     {benefit.title}
-                  </h3>
+                  </h4>
 
                   {/* Description */}
                   <p className="text-sm text-gray-300">

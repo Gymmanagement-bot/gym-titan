@@ -25,7 +25,7 @@ export default function FeaturesPage() {
       title: 'Payment & Billing',
       description: 'Streamline payment collection with automated invoicing and multiple payment options.',
       icon: 'M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z',
-      color: 'from-cyan-500 to-blue-500',
+      color: 'from-sky-500 to-cyan-500',
       items: [
         'Accept cash, card, UPI, and online payments',
         'Automated payment reminders via SMS & WhatsApp',
@@ -39,7 +39,7 @@ export default function FeaturesPage() {
       title: 'Membership Packages',
       description: 'Create flexible membership plans tailored to your gym business model.',
       icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
-      color: 'from-sky-500 to-cyan-500',
+      color: 'from-orange-600 to-orange-500',
       items: [
         'Create unlimited custom packages',
         'Set duration (monthly, quarterly, yearly)',
@@ -53,7 +53,7 @@ export default function FeaturesPage() {
       title: 'Role-Based Access Control',
       description: 'Secure multi-user system with customizable permissions for your team.',
       icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-sky-500 to-cyan-500',
       items: [
         'Create unlimited custom roles',
         'Admin: Full system control',
@@ -67,7 +67,7 @@ export default function FeaturesPage() {
       title: 'Automated Reminders',
       description: 'Never miss renewals with smart automated communication system.',
       icon: 'M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9',
-      color: 'from-cyan-500 to-blue-500',
+      color: 'from-orange-600 to-orange-500',
       items: [
         'Membership expiry reminders',
         'Payment due notifications',
@@ -109,7 +109,7 @@ export default function FeaturesPage() {
       title: 'Staff Management',
       description: 'Manage your team efficiently with attendance and performance tracking.',
       icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
-      color: 'from-cyan-500 to-blue-500',
+      color: 'from-sky-500 to-cyan-500',
       items: [
         'Add staff with role assignments',
         'Track staff attendance',
@@ -123,7 +123,7 @@ export default function FeaturesPage() {
       title: 'Expense Management',
       description: 'Track gym expenses and manage your budget effectively.',
       icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-      color: 'from-sky-500 to-cyan-500',
+      color: 'from-orange-600 to-orange-500',
       items: [
         'Record all expenses with categories',
         'Equipment and maintenance tracking',
@@ -137,7 +137,7 @@ export default function FeaturesPage() {
       title: 'WhatsApp & SMS Integration',
       description: 'Stay connected with members through automated messaging.',
       icon: 'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z',
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-sky-500 to-cyan-500',
       items: [
         'Send automated renewal reminders',
         'Payment confirmation messages',
@@ -151,7 +151,7 @@ export default function FeaturesPage() {
       title: 'Mobile App Access',
       description: 'Manage your gym on-the-go with dedicated mobile applications.',
       icon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
-      color: 'from-cyan-500 to-blue-500',
+      color: 'from-orange-600 to-orange-500',
       items: [
         'iOS and Android apps available',
         'Member app for workout tracking',
@@ -195,9 +195,9 @@ export default function FeaturesPage() {
               <span className={styles.badgeText}>POWERFUL FEATURES</span>
             </div>
 
-            <h1 className={styles.heading}>
-              <span style={{ color: 'white' }}>Everything You Need to </span>
-              <span className={styles.headingGradient}>Manage Your Gym</span>
+            <h1 className={`${styles.heading} text-3xl md:text-4xl lg:text-5xl`}>
+              <span className='text-3xl md:text-4xl lg:text-5xl' style={{ color: 'white' }}>Everything You Need to </span>
+              <span className={`${styles.headingGradient} text-3xl md:text-4xl lg:text-5xl`}>Manage Your Gym</span>
             </h1>
 
             <p className={styles.description}>
@@ -301,7 +301,7 @@ export default function FeaturesPage() {
             <p className={styles.description} style={{ fontSize: '1.25rem', marginBottom: '2rem' }}>
               Start your free trial and see how Gym Titan can transform your gym management
             </p>
-            <Link href="/#pricing" className={styles.ctaButton}>
+            <Link href="/contact" className={styles.ctaButton}>
               <span>Start Free Trial</span>
               <svg
                 className={styles.arrowIcon}
