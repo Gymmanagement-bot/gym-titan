@@ -11,6 +11,7 @@ const SUBJECTS = [
   { value: 'support',     label: 'Technical Support'  },
   { value: 'demo',        label: 'Request a Demo'     },
   { value: 'partnership', label: 'Partnership'        },
+  { value: 'other', label: 'Other'        },
 ];
 
 // ─── Custom Dropdown ──────────────────────────────────────────────────────────
@@ -115,8 +116,78 @@ function SubmittingPopup() {
   );
 }
 
+// ─── Error Popup ──────────────────────────────────────────────────────────────
+function ErrorPopup({ message, onClose }) {
+  useEffect(() => {
+    // Auto close after 8 seconds
+    const timer = setTimeout(() => {
+      onClose();
+    }, 8000);
+    
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  return (
+    <div className={styles.popupOverlay}>
+      <div className={`${styles.popupCard} ${styles.errorCard}`}>
+        {/* Glow */}
+        <div className={`${styles.popupGlow} ${styles.errorGlow}`}></div>
+
+        {/* Error icon */}
+        <div className={styles.errorIconWrapper}>
+          <div className={styles.errorIconRing}></div>
+          <div className={styles.errorIconBg}>
+            <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2.5"
+              strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"
+              style={{ color: '#fff' }}>
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+          </div>
+        </div>
+
+        <h3 className={styles.popupTitle}>Oops! Something Went Wrong</h3>
+
+        <p className={styles.errorMessage}>
+          {message}
+        </p>
+
+        {/* Divider */}
+        <div className={styles.errorDivider}></div>
+
+        <button onClick={onClose} className={styles.errorBtn}>
+          <span>Close</span>
+          <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2"
+            strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
+        <p style={{ 
+          marginTop: '12px', 
+          fontSize: '0.75rem', 
+          color: 'rgba(255,255,255,0.5)',
+          textAlign: 'center'
+        }}>
+          Auto-closing in 8 seconds...
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // ─── Success Popup ────────────────────────────────────────────────────────────
 function SuccessPopup({ name, onClose }) {
+  useEffect(() => {
+    // Auto close after 5 seconds
+    const timer = setTimeout(() => {
+      onClose();
+    }, 5000);
+    
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
   return (
     <div className={styles.popupOverlay}>
       <div className={`${styles.popupCard} ${styles.successCard}`}>
@@ -135,7 +206,7 @@ function SuccessPopup({ name, onClose }) {
           </div>
         </div>
 
-        <h3 className={styles.popupTitle}>Message Sent!</h3>
+        <h3 className={styles.popupTitle}>Message Sent Successfully!</h3>
 
         <p className={styles.successMessage}>
           Thank you, <span className={styles.highlight}>{name}</span>!
@@ -155,6 +226,15 @@ function SuccessPopup({ name, onClose }) {
             <path d="M5 13l4 4L19 7" />
           </svg>
         </button>
+        
+        <p style={{ 
+          marginTop: '12px', 
+          fontSize: '0.75rem', 
+          color: 'rgba(255,255,255,0.5)',
+          textAlign: 'center'
+        }}>
+          Auto-closing in 5 seconds...
+        </p>
       </div>
     </div>
   );
@@ -207,6 +287,11 @@ export default function ContactPage() {
     setFormData({ name: '', email: '', phone: '', subject: 'general', message: '' });
   };
 
+  const handleErrorClose = () => {
+    setStatus('idle');
+    setErrorMsg('');
+  };
+
   const contactInfo = [
     {
       title: 'Email Us',
@@ -216,18 +301,25 @@ export default function ContactPage() {
       color: 'from-orange-600 to-orange-500',
     },
     {
-      title: 'Call Us',
-      content: '+92 300 1234567',
-      link: 'tel:+923001234567',
-      icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z',
-      color: 'from-cyan-500 to-blue-500',
-    },
-    {
       title: 'WhatsApp',
       content: '+92 300 1234567',
       link: 'https://wa.me/923001234567',
       icon: 'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z',
       color: 'from-sky-500 to-cyan-500',
+    },
+    {
+      title: 'Facebook',
+      content: 'codeverza',
+      link: 'https://www.facebook.com/share/1GaLoS57GL/',
+      icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z',
+      color: 'from-blue-600 to-blue-500',
+    },
+    {
+      title: 'Instagram',
+      content: 'codeverza',
+      link: 'https://www.instagram.com/codeverza?stkn=Z2NkOW84ejE1cXQ3',
+      icon: 'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 6.5h11v11h-11z M6.5 6.5a2 2 0 00-2 2v9a2 2 0 002 2h11a2 2 0 002-2v-9a2 2 0 00-2-2h-11z',
+      color: 'from-pink-600 to-purple-500',
     },
     {
       title: 'Office Address',
@@ -245,6 +337,7 @@ export default function ContactPage() {
       {/* ── Popups ── */}
       {status === 'submitting' && <SubmittingPopup />}
       {status === 'success' && <SuccessPopup name={formData.name} onClose={handleSuccessClose} />}
+      {status === 'error' && <ErrorPopup message={errorMsg} onClose={handleErrorClose} />}
 
       {/* Hero Section */}
       <section className={styles.heroSection}>
@@ -272,76 +365,23 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section - Unified Card */}
       <section className={styles.contactSection}>
         <div className={styles.contentWrapper}>
-          <div className={styles.contactGrid}>
-
-            {/* Contact Info */}
-            <div className={styles.contactInfo}>
-              {contactInfo.map((info, idx) => (
-                <div key={idx} className={styles.infoCard}>
-                  <div className={styles.infoHeader}>
-                    <div
-                      className={styles.infoIcon}
-                      style={{
-                        background: `linear-gradient(135deg, ${
-                          info.color === 'from-orange-600 to-orange-500'
-                            ? '#ea580c, #f97316'
-                            : info.color === 'from-cyan-500 to-blue-500'
-                            ? '#06b6d4, #3b82f6'
-                            : info.color === 'from-sky-500 to-cyan-500'
-                            ? '#0ea5e9, #06b6d4'
-                            : '#f97316, #ea580c'
-                        })`,
-                      }}
-                    >
-                      <svg
-                        style={{ width: '1.5rem', height: '1.5rem', color: 'white' }}
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d={info.icon} />
-                      </svg>
-                    </div>
-                    <h3 className={styles.infoTitle}>{info.title}</h3>
-                  </div>
-                  <p className={styles.infoText}>
-                    {info.link ? (
-                      <a href={info.link} target="_blank" rel="noopener noreferrer" className={styles.infoLink}>
-                        {info.content}
-                      </a>
-                    ) : (
-                      info.content
-                    )}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Contact Form */}
-            <div className={styles.contactForm}>
-              <h2 className={styles.heading} style={{ fontSize: '1.875rem', marginBottom: '1.5rem' }}>
-                <span style={{ color: 'white' }}>Send us a </span>
-                <span className={styles.headingGradient}>Message</span>
-              </h2>
-
-              {status === 'error' && (
-                <div className={styles.errorBanner}>
-                  <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2"
-                    strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                  </svg>
-                  <span>{errorMsg}</span>
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit}>
+          
+          {/* Single Unified Card */}
+          <div className={styles.unifiedCard}>
+            
+            {/* Left Side - Contact Form */}
+            <div className={styles.formSection}>
+              <div className={styles.formHeader}>
+                <h2 className={styles.formTitle}>Get in Touch</h2>
+                <p className={styles.formSubtitle}>
+                  Have any queries? Fill out the form below and our team will contact you soon.
+                </p>
+              </div>
+              
+              <form onSubmit={handleSubmit} className={styles.contactForm}>
                 <div className={styles.formGroup}>
                   <label htmlFor="name" className={styles.formLabel}>Full Name *</label>
                   <input
@@ -398,6 +438,64 @@ export default function ContactPage() {
                   {status === 'submitting' ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
+            </div>
+
+            {/* Vertical Divider */}
+            <div className={styles.verticalDivider}></div>
+
+            {/* Right Side - Contact Information */}
+            <div className={styles.infoSection}>
+              <div className={styles.infoHeader}>
+                <h3 className={styles.infoTitle}>Contact Information</h3>
+                <p className={styles.infoSubtitle}>
+                  Reach out to us through any of these channels
+                </p>
+              </div>
+
+              <div className={styles.contactInfoList}>
+                {contactInfo.map((info, idx) => (
+                  <div key={idx} className={styles.infoItem}>
+                    <div
+                      className={styles.infoIcon}
+                      style={{
+                        background: `linear-gradient(135deg, ${
+                          info.color === 'from-orange-600 to-orange-500'
+                            ? '#ea580c, #f97316'
+                            : info.color === 'from-cyan-500 to-blue-500'
+                            ? '#06b6d4, #3b82f6'
+                            : info.color === 'from-sky-500 to-cyan-500'
+                            ? '#0ea5e9, #06b6d4'
+                            : '#f97316, #ea580c'
+                        })`,
+                      }}
+                    >
+                      <svg
+                        style={{ width: '1.25rem', height: '1.25rem', color: 'white' }}
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path d={info.icon} />
+                      </svg>
+                    </div>
+                    <div className={styles.infoContent}>
+                      <h4 className={styles.infoLabel}>{info.title}</h4>
+                      <p className={styles.infoValue}>
+                        {info.link ? (
+                          <a href={info.link} target="_blank" rel="noopener noreferrer" className={styles.infoLink}>
+                            {info.content}
+                          </a>
+                        ) : (
+                          info.content
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>

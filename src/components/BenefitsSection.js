@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 
 export default function BenefitsSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -70,18 +71,16 @@ export default function BenefitsSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div
-            className={`inline-flex items-center space-x-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full mb-6 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            className={`inline-flex items-center space-x-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
           >
             <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-orange-400 text-sm font-medium">WHY GYM OWNERS LOVE US</span>
           </div>
 
           <h2
-            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
           >
             <span className="text-white">Stop Wasting Time on </span>
             <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300 bg-clip-text text-transparent">
@@ -90,9 +89,8 @@ export default function BenefitsSection() {
           </h2>
 
           <p
-            className={`text-lg text-gray-400 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            className={`text-lg text-gray-300 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
           >
             Gym Titan eliminates administrative burden so you can focus on what matters - your members and business growth.
           </p>
@@ -103,9 +101,8 @@ export default function BenefitsSection() {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className={`group relative transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-              }`}
+              className={`group relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+                }`}
               style={{ transitionDelay: `${600 + index * 100}ms` }}
             >
               <div className="relative h-full bg-gradient-to-br from-white/5 to-white/0 rounded-2xl border border-white/10 group-hover:border-orange-500/50 transition-all duration-500 p-6 overflow-hidden">
@@ -137,7 +134,7 @@ export default function BenefitsSection() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-300">
                     {benefit.description}
                   </p>
                 </div>
@@ -148,9 +145,8 @@ export default function BenefitsSection() {
 
         {/* Comparison Section */}
         <div
-          className={`transition-all duration-1000 delay-1000 ${
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-          }`}
+          className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+            }`}
         >
           <div className="grid md:grid-cols-2 gap-8">
             {/* Without Gym Titan */}
@@ -202,6 +198,28 @@ export default function BenefitsSection() {
                 ))}
               </ul>
             </div>
+          </div>
+          {/* CTA Button */}
+          <div className="text-center mt-[70px]">
+            <Link href="/contact">
+              <button className="group relative px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg overflow-hidden shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-300 hover:scale-105">
+                <span className="relative z-10 flex items-center justify-center space-x-2">
+                  <span>Start Your Free Trial</span>
+                  <svg
+                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+              </button>
+            </Link>
           </div>
         </div>
       </div>

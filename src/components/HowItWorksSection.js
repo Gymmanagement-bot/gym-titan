@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 
 export default function HowItWorksSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -98,7 +99,7 @@ export default function HowItWorksSection() {
           </h2>
 
           <p
-            className={`text-lg text-gray-400 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-300 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
@@ -144,7 +145,7 @@ export default function HowItWorksSection() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-gray-400 leading-relaxed">
+                    <p className="text-gray-300 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -184,9 +185,10 @@ export default function HowItWorksSection() {
             <h3 className="text-2xl font-bold text-white">
               Ready to Digitize Your Gym?
             </h3>
-            <p className="text-gray-400 max-w-md">
+            <p className="text-gray-300 max-w-md">
               Join 1000+ gym owners who simplified their operations with Gym Titan
             </p>
+            <Link href={"/contact"}>
             <button className="group relative px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg overflow-hidden shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-300 hover:scale-105">
               <span className="relative z-10 flex items-center justify-center space-x-2">
                 <span>Start Your Free Trial</span>
@@ -204,6 +206,7 @@ export default function HowItWorksSection() {
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
             </button>
+            </Link>
           </div>
         </div>
       </div>

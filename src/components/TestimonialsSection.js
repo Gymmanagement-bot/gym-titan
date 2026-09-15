@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 
 export default function TestimonialsSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -121,12 +122,12 @@ export default function TestimonialsSection() {
           >
             <span className="text-white">Trusted by </span>
             <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300 bg-clip-text text-transparent">
-              1000+ Gym Owners
+              100+ Gym Owners
             </span>
           </h2>
 
           <p
-            className={`text-lg text-gray-400 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-300 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
@@ -189,7 +190,7 @@ export default function TestimonialsSection() {
                         <div className="text-xl font-bold text-white mb-1">
                           {testimonial.name}
                         </div>
-                        <div className="text-gray-400 text-sm mb-3">
+                        <div className="text-gray-300 text-sm mb-3">
                           {testimonial.role}
                         </div>
                         <div className={`inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r ${testimonial.color} text-white text-sm font-bold shadow-lg`}>
@@ -312,13 +313,35 @@ export default function TestimonialsSection() {
                 <div className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent mb-1">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
+                <div className="text-sm text-gray-300">{stat.label}</div>
               </div>
               {/* Hover Glow */}
               <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-orange-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-all duration-500 -z-10"></div>
             </div>
           ))}
         </div>
+        {/* CTA Button */}
+          <div className="text-center mt-[70px]">
+            <Link href="/contact">
+              <button className="group relative px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg overflow-hidden shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-300 hover:scale-105">
+                <span className="relative z-10 flex items-center justify-center space-x-2">
+                  <span>Start Your Free Trial</span>
+                  <svg
+                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+              </button>
+            </Link>
+          </div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 
 export default function RolesSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -103,18 +104,16 @@ export default function RolesSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div
-            className={`inline-flex items-center space-x-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full mb-6 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            className={`inline-flex items-center space-x-2 px-4 py-2 bg-orange-500/10 border border-orange-500/30 rounded-full mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
           >
             <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
             <span className="text-orange-400 text-sm font-medium">ROLE-BASED SYSTEM</span>
           </div>
 
           <h2
-            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
           >
             <span className="text-white">Every Team Member </span>
             <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300 bg-clip-text text-transparent">
@@ -123,9 +122,8 @@ export default function RolesSection() {
           </h2>
 
           <p
-            className={`text-lg text-gray-400 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            className={`text-lg text-gray-300 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
           >
             Create unlimited custom roles beyond these examples. Assign specific responsibilities to your team with granular permissions and access control.
           </p>
@@ -133,19 +131,17 @@ export default function RolesSection() {
 
         {/* Role Tabs */}
         <div
-          className={`flex flex-wrap justify-center gap-4 mb-12 transition-all duration-1000 delay-600 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className={`flex flex-wrap justify-center gap-4 mb-12 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
         >
           {roles.map((role, index) => (
             <button
               key={index}
               onClick={() => setActiveRole(index)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                activeRole === index
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${activeRole === index
                   ? `bg-gradient-to-r ${role.color} text-white shadow-lg scale-105`
-                  : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
-              }`}
+                  : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white'
+                }`}
             >
               {role.title}
             </button>
@@ -157,11 +153,10 @@ export default function RolesSection() {
           {roles.map((role, index) => (
             <div
               key={index}
-              className={`transition-all duration-500 ${
-                activeRole === index
+              className={`transition-all duration-500 ${activeRole === index
                   ? 'opacity-100 scale-100 relative'
                   : 'opacity-0 scale-95 absolute inset-0 pointer-events-none'
-              }`}
+                }`}
             >
               {/* Modern Card Design */}
               <div className="relative bg-gradient-to-br from-[#1a1a2e]/60 to-[#0a0a0f]/60 backdrop-blur-md rounded-3xl border border-white/10 p-8 md:p-12 overflow-hidden">
@@ -184,7 +179,7 @@ export default function RolesSection() {
                     <h3 className="text-4xl font-bold text-white mb-3">
                       {role.title}
                     </h3>
-                    <p className="text-xl text-gray-400">
+                    <p className="text-xl text-gray-300">
                       {role.description}
                     </p>
                   </div>
@@ -196,7 +191,7 @@ export default function RolesSection() {
                     <span className={`w-1 h-6 bg-gradient-to-b ${role.color} rounded-full mr-3`}></span>
                     Key Responsibilities
                   </h4>
-                  
+
                   <div className="grid md:grid-cols-2 gap-4">
                     {role.responsibilities.map((resp, idx) => (
                       <div
@@ -240,27 +235,26 @@ export default function RolesSection() {
 
         {/* Bottom Feature Highlight */}
         <div
-          className={`mt-16 transition-all duration-1000 delay-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className={`mt-16 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
         >
           <div className="bg-gradient-to-r from-orange-600/20 to-orange-500/10 backdrop-blur-sm rounded-2xl border border-orange-500/30 p-8">
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { 
-                  icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z', 
-                  title: 'Secure Role Login', 
-                  text: 'Each role has unique credentials and session management' 
+                {
+                  icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
+                  title: 'Secure Role Login',
+                  text: 'Each role has unique credentials and session management'
                 },
-                { 
-                  icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z', 
-                  title: 'Granular Permissions', 
-                  text: 'Control exactly what each role can view, edit, or delete' 
+                {
+                  icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+                  title: 'Granular Permissions',
+                  text: 'Control exactly what each role can view, edit, or delete'
                 },
-                { 
-                  icon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z', 
-                  title: 'Mobile & Desktop Access', 
-                  text: 'Manage from anywhere with responsive web and mobile apps' 
+                {
+                  icon: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
+                  title: 'Mobile & Desktop Access',
+                  text: 'Manage from anywhere with responsive web and mobile apps'
                 },
               ].map((item, idx) => (
                 <div
@@ -273,10 +267,32 @@ export default function RolesSection() {
                     </svg>
                   </div>
                   <h4 className="text-lg font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-sm text-gray-400">{item.text}</p>
+                  <p className="text-sm text-gray-300">{item.text}</p>
                 </div>
               ))}
             </div>
+          </div>
+          {/* CTA Button */}
+          <div className="text-center mt-[70px]">
+            <Link href="/contact">
+              <button className="group relative px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg overflow-hidden shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-300 hover:scale-105">
+                <span className="relative z-10 flex items-center justify-center space-x-2">
+                  <span>Start Your Free Trial</span>
+                  <svg
+                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -61,28 +61,18 @@ export default function Footer() {
   const socialLinks = [
     {
       name: 'Facebook',
-      href: '#',
+      href: 'https://www.facebook.com/share/1GaLoS57GL/',
       icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z',
     },
     {
-      name: 'Twitter',
-      href: '#',
-      icon: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z',
-    },
-    {
       name: 'Instagram',
-      href: '#',
+      href: 'https://www.instagram.com/codeverza?stkn=Z2NkOW84ejE1cXQ3',
       icon: 'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 6.5h11v11h-11z M6.5 6.5a2 2 0 00-2 2v9a2 2 0 002 2h11a2 2 0 002-2v-9a2 2 0 00-2-2h-11z',
     },
     {
-      name: 'LinkedIn',
-      href: '#',
-      icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 6a2 2 0 100-4 2 2 0 000 4z',
-    },
-    {
-      name: 'YouTube',
-      href: '#',
-      icon: 'M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z M9.75 15.02l5.75-3.27-5.75-3.27v6.54z',
+      name: 'WhatsApp',
+      href: 'https://wa.me/923251507557',
+      icon: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z',
     },
   ];
 
@@ -144,7 +134,7 @@ export default function Footer() {
               </span>
             </Link>
 
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-6 leading-relaxed">
               Complete gym management solution with role-based access for your entire team. Manage members, payments, and operations seamlessly.
             </p>
 
@@ -176,7 +166,7 @@ export default function Footer() {
                   key={idx}
                   href={social.href}
                   aria-label={social.name}
-                  className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-orange-500 hover:border-orange-500 transition-all duration-300 hover:scale-110"
+                  className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-orange-500 hover:border-orange-500 transition-all duration-300 hover:scale-110"
                 >
                   <svg
                     className="w-5 h-5"
@@ -202,7 +192,7 @@ export default function Footer() {
                 <li key={idx}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300 flex items-center group"
+                    className="text-gray-300 hover:text-orange-500 transition-colors duration-300 flex items-center group"
                   >
                     <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                       {link.name}
@@ -221,7 +211,7 @@ export default function Footer() {
                 <li key={idx}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300 flex items-center group"
+                    className="text-gray-300 hover:text-orange-500 transition-colors duration-300 flex items-center group"
                   >
                     <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                       {link.name}
@@ -240,7 +230,7 @@ export default function Footer() {
                 <li key={idx}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300 flex items-center group"
+                    className="text-gray-300 hover:text-orange-500 transition-colors duration-300 flex items-center group"
                   >
                     <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                       {link.name}
@@ -259,7 +249,7 @@ export default function Footer() {
                 <li key={idx}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300 flex items-center group"
+                    className="text-gray-300 hover:text-orange-500 transition-colors duration-300 flex items-center group"
                   >
                     <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                       {link.name}
@@ -288,7 +278,7 @@ export default function Footer() {
                 <div className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent">
                   {stat.number}
                 </div>
-                <div className="text-sm text-gray-400 mt-1">{stat.label}</div>
+                <div className="text-sm text-gray-300 mt-1">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -298,7 +288,7 @@ export default function Footer() {
         <div className="py-8 border-t border-white/10">
           <div className="flex flex-col items-center gap-4">
             {/* Copyright & Credits */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-gray-400 text-sm">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-gray-300 text-sm">
               <span>© {new Date().getFullYear()} Gym Titan. All rights reserved.</span>
               <span className="hidden md:inline">•</span>
               <span>Built with ❤️ for gym owners</span>
@@ -332,12 +322,12 @@ export default function Footer() {
 
             {/* Additional Info */}
             <div className="flex items-center space-x-6 text-sm">
-              <div className="flex items-center space-x-2 text-gray-400">
+              <div className="flex items-center space-x-2 text-gray-300">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span>All Systems Operational</span>
               </div>
               <span className="text-gray-600">•</span>
-              <div className="text-gray-400">
+              <div className="text-gray-300">
                 Made in 🇵🇰 Pakistan
               </div>
             </div>

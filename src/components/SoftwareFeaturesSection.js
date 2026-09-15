@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 
 export default function SoftwareFeaturesSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -106,7 +107,7 @@ export default function SoftwareFeaturesSection() {
           </h2>
 
           <p
-            className={`text-lg text-gray-400 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
+            className={`text-lg text-gray-300 max-w-2xl mx-auto transition-all duration-1000 delay-400 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
@@ -115,7 +116,7 @@ export default function SoftwareFeaturesSection() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -146,7 +147,7 @@ export default function SoftwareFeaturesSection() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-400 mb-6 leading-relaxed">
+                  <p className="text-gray-300 mb-6 leading-relaxed">
                     {feature.description}
                   </p>
 
@@ -173,6 +174,29 @@ export default function SoftwareFeaturesSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center">
+          <Link href="/contact">
+            <button className="group relative px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg overflow-hidden shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-300 hover:scale-105">
+              <span className="relative z-10 flex items-center justify-center space-x-2">
+                <span>Start Your Free Trial</span>
+                <svg
+                  className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+            </button>
+          </Link>
         </div>
       </div>
     </section>
