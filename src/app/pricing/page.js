@@ -1,78 +1,160 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
 export default function PricingPage() {
+  const [billingPeriod, setBillingPeriod] = useState('monthly');
+
   const plans = [
     {
-      name: 'Starter',
-      description: 'Perfect for small gyms starting their digital journey',
-      price: '999',
-      period: '/month',
+      name: 'Fit Start',
+      badge: '🥉',
+      subtitle: 'Small Gyms',
+      description: 'For Small / starting gyms',
+      monthlyOriginalPrice: '1,999',
+      monthlyPrice: '1,499',
+      yearlyOriginalPrice: '23,988',
+      yearlyPrice: '20,990',
+      discount: '25',
+      period: 'month',
       icon: 'M13 10V3L4 14h7v7l9-11h-7z',
       color: 'from-cyan-500 to-blue-500',
       popular: false,
       features: [
-        'Up to 100 members',
-        'Basic member management',
-        'Payment tracking',
-        '2 staff accounts',
-        'SMS notifications (100/month)',
-        'Attendance tracking',
-        'Basic reports',
-        'Email support',
+        'Admin: 1',
+        'Members: 100',
+        'Staff: 2',
+        'Trainers: 2',
+        // 'Branches: 1',
+        'Member Management',
+        'Membership Plans',
+        'Membership Expiry Tracking',
+        // 'Attendance Management',
+        'Payment & Fee Management',
+        'Member Search',
+        'Basic Dashboard',
+        'Basic Reports',
+        // 'WhatsApp Contact/Reminder',
+        'Workout Plans',
+        // 'Member Progress Tracking',
+        'Expense Management',
+        'Revenue Reports',
+        // 'Attendance Reports',
+        'Payment History',
+        'Due Payment Tracking',
+        'Automated Membership Expiry Reminders',
+        'Data Export',
       ],
       buttonText: 'Start Free Trial',
       buttonStyle: 'secondary',
     },
     {
-      name: 'Professional',
-      description: 'Most popular choice for growing fitness businesses',
-      price: '1,999',
-      period: '/month',
+      name: 'Fit Plus',
+      badge: '🥈',
+      subtitle: 'Growing Gyms',
+      description: 'For Medium-size gyms - Recommended',
+      monthlyOriginalPrice: '4,099',
+      monthlyPrice: '3,399',
+      yearlyOriginalPrice: '49,188',
+      yearlyPrice: '40,990',
+      discount: '18',
+      period: 'month',
       icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
       color: 'from-orange-600 to-orange-500',
       popular: true,
+      // featuresNote: 'All  features +',
       features: [
-        'Up to 500 members',
-        'Complete member management',
-        'Multiple payment methods',
-        '10 staff accounts',
-        'Unlimited SMS & WhatsApp',
-        'Biometric attendance',
-        'Advanced analytics & reports',
-        'Role-based access control',
-        'Expense management',
-        'Mobile app access',
-        'Priority support',
+        'Admin: 1',
+        'Members: 300',
+        'Staff: 3',
+        'Trainers: 4',
+        // 'Branches: 2',
+        'Member Management',
+        'Membership Plans',
+        'Membership Expiry Tracking',
+        'Attendance Management',
+        'Payment & Fee Management',
+        'Member Search',
+        'Advanced Dashboard',
+        'Advanced Reports',
+        'WhatsApp Contact/Reminder',
+        'Staff Role & Permissions',
+        'Trainer Management',
+        'Workout Plans',
+        'Member Progress Tracking',
+        'Expense Management',
+        'Revenue Reports',
+        // 'Attendance Reports',
+        'Payment History',
+        'Due Payment Tracking',
+        'Automated Membership Expiry Reminders',
+        'Data Export',
+        // 'Branch-wise Management',
+        'Advanced Analytics',
+        'Revenue & Expense Analytics',
+        'Trainer Performance',
+        'Member Performance',
+        'Role-based Access Control',
       ],
       buttonText: 'Get Started',
       buttonStyle: 'primary',
     },
     {
-      name: 'Enterprise',
-      description: 'For large gyms and fitness chains with multiple branches',
-      price: '4,999',
-      period: '/month',
+      name: 'Fit Max',
+      badge: '🥇',
+      subtitle: 'Large Gyms / Fitness Centers',
+      description: 'For Large gyms and professional fitness centers',
+      monthlyOriginalPrice: '6,999',
+      monthlyPrice: '5,499',
+      yearlyOriginalPrice: '83,988',
+      yearlyPrice: '69,990',
+      discount: '21.4',
+      period: 'month',
       icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
       color: 'from-sky-500 to-cyan-500',
       popular: false,
+      // featuresNote: 'Professional ke tamam features +',
       features: [
-        'Unlimited members',
-        'Multi-branch management',
-        'All payment integrations',
-        'Unlimited staff accounts',
-        'Unlimited communications',
-        'Custom integrations',
-        'White-label mobile apps',
-        'Dedicated account manager',
-        'Custom reports & dashboards',
-        'API access',
-        'Training & onboarding',
-        '24/7 priority support',
+        'Admin: 1',
+        'Members: 400',
+        'Staff: 5',
+        'Trainers: 7',
+        // 'Branches: 5',
+        'Member Management',
+        'Membership Plans',
+        'Membership Expiry Tracking',
+        // 'Attendance Management',
+        'Payment & Fee Management',
+        'Member Search',
+        'Advanced Dashboard',
+        'Advanced Reports',
+        'WhatsApp Contact/Reminder',
+        'Staff Role & Permissions',
+        'Trainer Management',
+        'Workout Plans',
+        'Member Progress Tracking',
+        'Expense Management',
+        'Revenue Reports',
+        'Attendance Reports',
+        'Payment History',
+        'Due Payment Tracking',
+        'Automated Membership Expiry Reminders',
+        'Data Export',
+        // 'Branch-wise Management',
+        'Advanced Analytics',
+        'Revenue & Expense Analytics',
+        'Trainer Performance',
+        'Member Performance',
+        'Role-based Access Control',
+        'Custom Reports',
+        'Priority Support',
+        'Backup & Recovery',
+        'API / Integration Support',
+        // 'Custom Branding',
       ],
       buttonText: 'Contact Sales',
       buttonStyle: 'secondary',
@@ -82,7 +164,7 @@ export default function PricingPage() {
   const faqs = [
     {
       question: 'Is there a free trial available?',
-      answer: 'Yes! We offer a 14-day free trial for all plans. No credit card required. You can explore all features and see how Gym Titan fits your business.',
+      answer: 'Yes! We offer a 7-day free trial for all plans. No credit card required. You can explore all features and see how Gym Titan fits your business.',
     },
     {
       question: 'Can I upgrade or downgrade my plan?',
@@ -134,6 +216,23 @@ export default function PricingPage() {
               Transparent pricing with no hidden fees. Start with a 14-day free trial.
               No credit card required.
             </p>
+
+            {/* Billing Toggle */}
+            <div className={styles.billingToggle}>
+              <button
+                className={`${styles.toggleButton} ${billingPeriod === 'monthly' ? styles.activeToggle : ''}`}
+                onClick={() => setBillingPeriod('monthly')}
+              >
+                Monthly
+              </button>
+              <button
+                className={`${styles.toggleButton} ${billingPeriod === 'yearly' ? styles.activeToggle : ''}`}
+                onClick={() => setBillingPeriod('yearly')}
+              >
+                Yearly
+                <span className={styles.saveBadge}>2 Months Free</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -144,6 +243,10 @@ export default function PricingPage() {
           <div className={styles.pricingGrid}>
             {plans.map((plan, idx) => (
               <div key={idx} className={styles.pricingCard}>
+                {plan.discount && (
+                  <div className={styles.discountBadge}>-{plan.discount}% OFF</div>
+                )}
+
                 {plan.popular && (
                   <div className={styles.popularBadge}>Most Popular</div>
                 )}
@@ -152,38 +255,73 @@ export default function PricingPage() {
                   <div
                     className={styles.planIcon}
                     style={{
-                      background: `linear-gradient(135deg, ${
-                        plan.color === 'from-orange-600 to-orange-500'
-                          ? '#ea580c, #f97316'
-                          : plan.color === 'from-cyan-500 to-blue-500'
+                      background: `linear-gradient(135deg, ${plan.color === 'from-orange-600 to-orange-500'
+                        ? '#ea580c, #f97316'
+                        : plan.color === 'from-cyan-500 to-blue-500'
                           ? '#06b6d4, #3b82f6'
                           : '#0ea5e9, #06b6d4'
-                      })`,
+                        })`,
                     }}
                   >
-                    <svg
-                      style={{ width: '2rem', height: '2rem', color: 'white' }}
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path d={plan.icon} />
-                    </svg>
+                    <span style={{ fontSize: '1.75rem' }}>{plan.badge}</span>
                   </div>
-                  <h3 className={styles.planName}>{plan.name}</h3>
+                  <h3 className={styles.planName}>
+                    {plan.name}
+                    {plan.subtitle && <span style={{ fontSize: '0.75rem', fontWeight: '500', color: '#f7f7f7', display: 'block', marginTop: '0.25rem' }}> {plan.subtitle}</span>}
+                  </h3>
                   <p className={styles.planDescription}>{plan.description}</p>
                 </div>
 
                 <div className={styles.priceContainer}>
+                  {(billingPeriod === 'monthly' ? plan.monthlyOriginalPrice : plan.yearlyOriginalPrice) && (
+                    <>
+                      <div className={styles.earlyBirdBadge}>
+                        <svg className={styles.earlyBirdIcon} fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" />
+                        </svg>
+                        <span className={styles.earlyBirdText}>Early Bird</span>
+                      </div>
+                      <div className={styles.originalPrice}>
+                        <span style={{ fontSize: '0.875rem' }}>Rs </span>
+                        {billingPeriod === 'monthly' ? plan.monthlyOriginalPrice : plan.yearlyOriginalPrice}
+                      </div>
+                    </>
+                  )}
                   <div className={styles.priceAmount}>
-                    <span className={styles.currency}>₹</span>
-                    {plan.price}
+                    <span className={styles.currency}>Rs</span>
+                    {billingPeriod === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice}
                   </div>
-                  <div className={styles.pricePeriod}>{plan.period}</div>
+                  <div className={styles.pricePeriod}>/{billingPeriod === 'monthly' ? 'month' : 'year'}</div>
+                  {billingPeriod === 'yearly' && (
+                    <div className={styles.freeBonusBadge}>
+                      <svg className={styles.giftIcon} fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clipRule="evenodd" />
+                        <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z" />
+                      </svg>
+                      <span>2 months free included</span>
+                    </div>
+                  )}
+                  {(billingPeriod === 'monthly' ? plan.monthlyOriginalPrice : plan.yearlyOriginalPrice) && (
+                    <div className={styles.limitedOffer}>Limited time offer — price will increase soon</div>
+                  )}
                 </div>
+
+                {plan.featuresNote && (
+                  <div style={{
+                    padding: '0.625rem 0.875rem',
+                    background: 'rgba(249, 115, 22, 0.1)',
+                    borderRadius: '0.5rem',
+                    marginBottom: '1rem',
+                    border: '1px solid rgba(249, 115, 22, 0.3)'
+                  }}>
+                    <span style={{
+                      color: '#fb923c',
+                      fontSize: '0.8125rem',
+                      fontWeight: '600',
+                      fontStyle: 'italic'
+                    }}>{plan.featuresNote}</span>
+                  </div>
+                )}
 
                 <ul className={styles.featuresList}>
                   {plan.features.map((feature, fIdx) => (
@@ -205,12 +343,11 @@ export default function PricingPage() {
                 </ul>
 
                 <Link
-                  href="#contact"
-                  className={`${styles.ctaButton} ${
-                    plan.buttonStyle === 'primary'
-                      ? styles.primaryButton
-                      : styles.secondaryButton
-                  }`}
+                  href="/contact"
+                  className={`${styles.ctaButton} ${plan.buttonStyle === 'primary'
+                    ? styles.primaryButton
+                    : styles.secondaryButton
+                    }`}
                 >
                   {plan.buttonText}
                 </Link>
@@ -218,13 +355,12 @@ export default function PricingPage() {
                 <div
                   className={styles.glowEffect}
                   style={{
-                    background: `linear-gradient(135deg, ${
-                      plan.color === 'from-orange-600 to-orange-500'
-                        ? '#ea580c, #f97316'
-                        : plan.color === 'from-cyan-500 to-blue-500'
+                    background: `linear-gradient(135deg, ${plan.color === 'from-orange-600 to-orange-500'
+                      ? '#ea580c, #f97316'
+                      : plan.color === 'from-cyan-500 to-blue-500'
                         ? '#06b6d4, #3b82f6'
                         : '#0ea5e9, #06b6d4'
-                    })`,
+                      })`,
                   }}
                 ></div>
               </div>

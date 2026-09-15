@@ -6,6 +6,10 @@ import Link from 'next/link';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
+  const [popupType, setPopupType] = useState('success'); // 'success', 'error', 'info'
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -24,11 +28,48 @@ export default function Footer() {
     }));
   }, [isMounted]);
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log('Subscribed:', email);
-    setEmail('');
+    
+    if (!email || !email.includes('@')) {
+      setPopupType('error');
+      setPopupMessage('Please enter a valid email address.');
+      setShowPopup(true);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setPopupType('info');
+    setPopupMessage('Subscribing...');
+    setShowPopup(true);
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setPopupType('success');
+        setPopupMessage(data.message);
+        setEmail('');
+      } else if (data.alreadySubscribed) {
+        setPopupType('info');
+        setPopupMessage(data.message);
+      } else {
+        setPopupType('error');
+        setPopupMessage(data.message || 'Subscription failed. Please try again.');
+      }
+    } catch (error) {
+      setPopupType('error');
+      setPopupMessage('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setShowPopup(false), 5000);
+    }
   };
 
   const footerLinks = {
@@ -152,9 +193,22 @@ export default function Footer() {
                 />
                 <button
                   type="submit"
-                  className="px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105"
+                  disabled={isSubmitting}
+                  className={`px-6 py-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed ${
+                    isSubmitting ? 'hover:shadow-none hover:scale-100' : 'hover:shadow-lg hover:shadow-orange-500/50'
+                  }`}
                 >
-                  Subscribe
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span>Subscribing...</span>
+                    </span>
+                  ) : (
+                    'Subscribe'
+                  )}
                 </button>
               </form>
             </div>
@@ -337,6 +391,128 @@ export default function Footer() {
 
       {/* Decorative Bottom Border */}
       <div className="h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
+
+      {/* Subscription Popup - Center Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="relative w-full max-w-md mx-4 animate-scale-in">
+            <div className="relative bg-gradient-to-br from-[#1e293b] to-[#0f172a] rounded-2xl p-8 border border-white/10 shadow-2xl">
+              {/* Close button */}
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Icon */}
+              <div className="flex justify-center mb-6">
+                <div className={`relative w-24 h-24 rounded-full flex items-center justify-center
+                  ${popupType === 'success' ? 'bg-orange-500/20' : ''}
+                  ${popupType === 'error' ? 'bg-red-500/20' : ''}
+                  ${popupType === 'info' ? 'bg-blue-500/20' : ''}
+                `}>
+                  {/* Animated ring */}
+                  <div className={`absolute inset-0 rounded-full animate-ping
+                    ${popupType === 'success' ? 'bg-orange-500/50' : ''}
+                    ${popupType === 'error' ? 'bg-red-500/50' : ''}
+                    ${popupType === 'info' ? 'bg-blue-500/50' : ''}
+                  `} style={{ animationDuration: '2s' }}></div>
+                  
+                  {/* Inner circle */}
+                  <div className={`relative w-16 h-16 rounded-full flex items-center justify-center
+                    ${popupType === 'success' ? 'bg-orange-500' : ''}
+                    ${popupType === 'error' ? 'bg-red-500' : ''}
+                    ${popupType === 'info' ? 'bg-blue-500' : ''}
+                  `}>
+                    {popupType === 'success' && (
+                      <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                    {popupType === 'error' && (
+                      <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    )}
+                    {popupType === 'info' && (
+                      <svg className="w-8 h-8 text-white animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-white text-center mb-3">
+                {popupType === 'success' && 'Newsletter Subscribed!'}
+                {popupType === 'error' && 'Subscription Failed'}
+                {popupType === 'info' && 'Subscribing...'}
+              </h3>
+
+              {/* Message */}
+              <p className="text-gray-300 text-center mb-6 leading-relaxed">
+                {popupMessage}
+              </p>
+
+              {/* Loading dots for info */}
+              {popupType === 'info' && (
+                <div className="flex justify-center gap-2 mb-6">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                </div>
+              )}
+
+              {/* Done button (only for success/error) */}
+              {popupType !== 'info' && (
+                <>
+                  <button
+                    onClick={() => setShowPopup(false)}
+                    className="w-full py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <span>Done</span>
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </button>
+                  
+                  <p className="text-center text-gray-500 text-sm mt-4">
+                    Auto-closing in 5 seconds...
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes scale-in {
+          from {
+            transform: scale(0.9);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out;
+        }
+        .animate-scale-in {
+          animation: scale-in 0.4s ease-out;
+        }
+      `}</style>
     </footer>
   );
 }
