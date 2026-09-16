@@ -79,28 +79,28 @@ export default function Footer() {
 
   const footerLinks = {
     product: [
-      { name: 'Features', href: '#features' },
-      { name: 'Pricing', href: '#pricing' },
-      { name: 'How It Works', href: '#how-it-works' },
+      { name: 'Features', href: '/features' },
+      { name: 'Pricing', href: '/pricing' },
+      { name: 'How It Works', href: '/how-it-works' },
       { name: 'Roles & Permissions', href: '#roles' },
     ],
     company: [
-      { name: 'About Us', href: '#about' },
+      { name: 'About Us', href: '/about' },
       { name: 'Testimonials', href: '#testimonials' },
-      { name: 'Contact Us', href: '#contact' },
-      { name: 'Blog', href: '#blog' },
+      { name: 'Contact Us', href: '/contact' },
+      // { name: 'Blog', href: '#blog' },
     ],
     support: [
       { name: 'Help Center', href: '#help' },
-      { name: 'Documentation', href: '#docs' },
-      { name: 'API Reference', href: '#api' },
-      { name: 'System Status', href: '#status' },
+      // { name: 'Documentation', href: '#docs' },
+      // { name: 'API Reference', href: '#api' },
+      // { name: 'System Status', href: '#status' },
     ],
     legal: [
-      { name: 'Privacy Policy', href: '#privacy' },
-      { name: 'Terms of Service', href: '#terms' },
-      { name: 'Cookie Policy', href: '#cookies' },
-      { name: 'Refund Policy', href: '#refund' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Terms of Service', href: '/terms-of-service' },
+      { name: 'Cookie Policy', href: '/terms-of-service' },
+      // { name: 'Refund Policy', href: '#refund' },
     ],
   };
 

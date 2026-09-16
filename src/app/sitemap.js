@@ -48,6 +48,18 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.90,
     },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.70,
+    },
+    {
+      url: `${baseUrl}/terms-of-service`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.70,
+    },
   ];
 
   return routes;
