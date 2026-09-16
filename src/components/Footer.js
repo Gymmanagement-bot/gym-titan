@@ -99,7 +99,7 @@ export default function Footer() {
     legal: [
       { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Terms of Service', href: '/terms-of-service' },
-      { name: 'Cookie Policy', href: '/terms-of-service' },
+      { name: 'Cookie Policy', href: '/privacy-policy' },
       // { name: 'Refund Policy', href: '#refund' },
     ],
   };
