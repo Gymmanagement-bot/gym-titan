@@ -694,3 +694,32 @@ h6 {
 .animate-spark {
   animation: spark 0.8s ease-out infinite;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   WEBKIT AUTOFILL OVERRIDE - NEWSLETTER INPUT
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Remove default yellow/white background from autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #1a1a2e inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 0 0 1000px #1a1a2e inset !important;
+  caret-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Newsletter specific autofill styling */
+input[type="email"]:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #1a1a2e inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+input[type="email"]:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #1e1e3a inset !important;
+  border-color: #f97316 !important;
+}
+

@@ -33,14 +33,15 @@ export default function Footer() {
     
     if (!email || !email.includes('@')) {
       setPopupType('error');
-      setPopupMessage('Please enter a valid email address.');
+      setPopupMessage('⚠️ Please enter a valid email address to continue.');
       setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 4000);
       return;
     }
 
     setIsSubmitting(true);
     setPopupType('info');
-    setPopupMessage('Subscribing...');
+    setPopupMessage('⏳ Please wait while we process your subscription...');
     setShowPopup(true);
 
     try {
@@ -56,19 +57,23 @@ export default function Footer() {
         setPopupType('success');
         setPopupMessage(data.message);
         setEmail('');
+        setTimeout(() => setShowPopup(false), 6000);
       } else if (data.alreadySubscribed) {
         setPopupType('info');
         setPopupMessage(data.message);
+        setTimeout(() => setShowPopup(false), 5000);
       } else {
         setPopupType('error');
-        setPopupMessage(data.message || 'Subscription failed. Please try again.');
+        setPopupMessage(data.message || '❌ Subscription failed. Please try again in a moment.');
+        setTimeout(() => setShowPopup(false), 5000);
       }
     } catch (error) {
+      console.error('Newsletter error:', error);
       setPopupType('error');
-      setPopupMessage('Network error. Please check your connection and try again.');
+      setPopupMessage('🌐 Network error! Please check your internet connection and try again.');
+      setTimeout(() => setShowPopup(false), 5000);
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setShowPopup(false), 5000);
     }
   };
 
@@ -188,7 +193,7 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
+                  className="flex-1 px-4 py-2 bg-[#1a1a2e] border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 focus:bg-[#1e1e3a] transition-all duration-300 [&:-webkit-autofill]:!bg-[#1a1a2e] [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:shadow-[0_0_0_1000px_#1a1a2e_inset] [&:-webkit-autofill:hover]:!bg-[#1a1a2e] [&:-webkit-autofill:focus]:!bg-[#1a1a2e] [&:-webkit-autofill:active]:!bg-[#1a1a2e]"
                   required
                 />
                 <button
@@ -449,9 +454,10 @@ export default function Footer() {
 
               {/* Title */}
               <h3 className="text-2xl font-bold text-white text-center mb-3">
-                {popupType === 'success' && 'Newsletter Subscribed!'}
-                {popupType === 'error' && 'Subscription Failed'}
-                {popupType === 'info' && 'Subscribing...'}
+                {popupType === 'success' && '🎉 Successfully Subscribed!'}
+                {popupType === 'error' && '❌ Oops! Something Went Wrong'}
+                {popupType === 'info' && isSubmitting && '⏳ Subscribing...'}
+                {popupType === 'info' && !isSubmitting && '✨ Already Subscribed'}
               </h3>
 
               {/* Message */}
@@ -469,23 +475,23 @@ export default function Footer() {
               )}
 
               {/* Done button (only for success/error) */}
-              {popupType !== 'info' && (
+              {popupType !== 'info' || !isSubmitting ? (
                 <>
                   <button
                     onClick={() => setShowPopup(false)}
-                    className="w-full py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+                    className="w-full py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105"
                   >
-                    <span>Done</span>
+                    <span>Got it!</span>
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </button>
                   
                   <p className="text-center text-gray-500 text-sm mt-4">
-                    Auto-closing in 5 seconds...
+                    Auto-closing in {popupType === 'success' ? '6' : '5'} seconds...
                   </p>
                 </>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
