@@ -5,6 +5,130 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
+// Structured Data for Contact Page
+function ContactStructuredData() {
+  const contactPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact Gym Titan',
+    description: 'Get in touch with Gym Titan for demos, support, and inquiries',
+    url: 'https://gymtitan.codeverza.com/contact',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Gym Titan',
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+92-325-1507557',
+          contactType: 'Customer Service',
+          areaServed: 'PK',
+          availableLanguage: ['English', 'Urdu'],
+          contactOption: 'TollFree',
+          hoursAvailable: {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: [
+              'Monday',
+              'Tuesday',
+              'Wednesday',
+              'Thursday',
+              'Friday',
+              'Saturday',
+              'Sunday',
+            ],
+            opens: '00:00',
+            closes: '23:59',
+          },
+        },
+        {
+          '@type': 'ContactPoint',
+          telephone: '+92-325-1507557',
+          contactType: 'Sales',
+          areaServed: 'PK',
+          availableLanguage: ['English', 'Urdu'],
+        },
+        {
+          '@type': 'ContactPoint',
+          telephone: '+92-325-1507557',
+          contactType: 'Technical Support',
+          areaServed: 'PK',
+          availableLanguage: ['English', 'Urdu'],
+        },
+      ],
+    },
+  };
+
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Gym Titan',
+    description: 'Complete gym management software solution',
+    telephone: '+92-325-1507557',
+    email: 'support@gymtitan.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'PK',
+      addressLocality: 'Pakistan',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '30.3753',
+      longitude: '69.3451',
+    },
+    url: 'https://gymtitan.codeverza.com',
+    priceRange: '$$',
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '00:00',
+      closes: '23:59',
+    },
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://gymtitan.codeverza.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Contact',
+        item: 'https://gymtitan.codeverza.com/contact',
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
+  );
+}
+
 const SUBJECTS = [
   { value: 'general', label: 'General Inquiry' },
   { value: 'sales', label: 'Sales & Pricing' },
@@ -240,7 +364,6 @@ function SuccessPopup({ name, onClose }) {
   );
 }
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -302,8 +425,8 @@ export default function ContactPage() {
     },
     {
       title: 'WhatsApp',
-      content: '+92 300 1234567',
-      link: 'https://wa.me/923001234567',
+      content: '+92 325 1507557',
+      link: 'https://wa.me/923251507557',
       icon: 'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z',
       color: 'from-sky-500 to-cyan-500',
     },
@@ -331,8 +454,12 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className={styles.container}>
-      <Navbar />
+    <>
+      {/* Structured Data for SEO */}
+      <ContactStructuredData />
+      
+      <div className={styles.container} itemScope itemType="https://schema.org/ContactPage">
+        <Navbar />
 
       {/* ── Popups ── */}
       {status === 'submitting' && <SubmittingPopup />}
@@ -504,6 +631,7 @@ export default function ContactPage() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 }

@@ -10,6 +10,7 @@ import HowItWorksSection from '@/components/HowItWorksSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import SoftwarePricingSection from '@/components/SoftwarePricingSection';
 import Footer from '@/components/Footer';
+import StructuredData from '@/components/StructuredData';
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -42,16 +43,20 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen relative">
-      <Navbar />
-      <HeroSection />
-      <SoftwareFeaturesSection />
-      <RolesSection />
-      <BenefitsSection />
-      <HowItWorksSection />
-      <TestimonialsSection />
-      {/* <SoftwarePricingSection /> */}
-      <Footer />
+    <>
+      {/* Structured Data for SEO */}
+      <StructuredData />
+      
+      <main className="min-h-screen relative" itemScope itemType="https://schema.org/WebPage">
+        <Navbar />
+        <HeroSection />
+        <SoftwareFeaturesSection />
+        <RolesSection />
+        <BenefitsSection />
+        <HowItWorksSection />
+        <TestimonialsSection />
+        {/* <SoftwarePricingSection /> */}
+        <Footer />
 
       {/* Rocket Scroll to Top Button */}
       <div
@@ -215,6 +220,7 @@ export default function Home() {
           }`}></div>
         </button>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

@@ -129,7 +129,7 @@ export default function SoftwarePricingSection() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            No hidden fees. No setup charges. Start with 14-day free trial.
+            No hidden fees. No setup charges. Start with 7-days free trial.
           </p>
 
           {/* Billing Toggle */}
@@ -285,7 +285,7 @@ export default function SoftwarePricingSection() {
           }`}
         >
           {[
-            { icon: '✅', text: '14-Day Free Trial' },
+            { icon: '✅', text: '7-days Free Trial' },
             { icon: '🔒', text: 'No Credit Card Required' },
             { icon: '📞', text: 'Free Onboarding' },
             { icon: '💯', text: '30-Day Money Back' },

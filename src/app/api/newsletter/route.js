@@ -185,7 +185,7 @@ export async function POST(request) {
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
                         <td style="color: #e5e7eb; font-size: 18px; line-height: 1.8; padding: 30px 0 20px 0; text-align: center; font-weight: 500;">
-                          Ready to transform your gym management?<br>Start your free 14-day trial today! 🚀
+                          Ready to transform your gym management?<br>Start your free 7-days trial today! 🚀
                         </td>
                       </tr>
                     </table>

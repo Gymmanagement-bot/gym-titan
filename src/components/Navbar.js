@@ -17,11 +17,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Features', href: '/features' },
     { name: 'About', href: '/about' },
+    { name: 'Features', href: '/features' },
+    { name: 'Pricing', href: '/pricing' },
     { name: 'How It Works', href: '/how-it-works' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Pricing', href: '/pricing' },
   ];
 
   return (
@@ -74,7 +74,7 @@ export default function Navbar() {
               Sign In
             </Link>
             <Link 
-              href="#pricing"
+              href="/pricing"
               className="relative inline-block px-6 py-2.5 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg overflow-hidden group"
             >
               <span className="relative z-10">Get Started</span>

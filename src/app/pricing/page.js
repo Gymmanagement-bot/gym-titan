@@ -6,6 +6,108 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
+// Structured Data for Pricing Page
+function PricingStructuredData() {
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Gym Titan Management Software',
+    description: 'Complete gym management software with three pricing plans',
+    brand: {
+      '@type': 'Brand',
+      name: 'Gym Titan',
+    },
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Fit Start',
+        description: 'For small/starting gyms',
+        price: '1499',
+        priceCurrency: 'PKR',
+        priceValidUntil: '2025-12-31',
+        availability: 'https://schema.org/InStock',
+        url: 'https://gymtitan.codeverza.com/pricing',
+        seller: {
+          '@type': 'Organization',
+          name: 'Gym Titan',
+        },
+      },
+      {
+        '@type': 'Offer',
+        name: 'Fit Plus',
+        description: 'For medium-size gyms - Recommended',
+        price: '3399',
+        priceCurrency: 'PKR',
+        priceValidUntil: '2025-12-31',
+        availability: 'https://schema.org/InStock',
+        url: 'https://gymtitan.codeverza.com/pricing',
+        seller: {
+          '@type': 'Organization',
+          name: 'Gym Titan',
+        },
+      },
+      {
+        '@type': 'Offer',
+        name: 'Fit Max',
+        description: 'For large gyms and fitness centers',
+        price: '5499',
+        priceCurrency: 'PKR',
+        priceValidUntil: '2025-12-31',
+        availability: 'https://schema.org/InStock',
+        url: 'https://gymtitan.codeverza.com/pricing',
+        seller: {
+          '@type': 'Organization',
+          name: 'Gym Titan',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://gymtitan.codeverza.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Pricing',
+        item: 'https://gymtitan.codeverza.com/pricing',
+      },
+    ],
+  };
+
+  const pricingPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Gym Titan Pricing',
+    description: 'Choose the perfect gym management plan for your business',
+    url: 'https://gymtitan.codeverza.com/pricing',
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingPageSchema) }}
+      />
+    </>
+  );
+}
+
 export default function PricingPage() {
   const [billingPeriod, setBillingPeriod] = useState('monthly');
 
@@ -189,8 +291,12 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className={styles.container}>
-      <Navbar />
+    <>
+      {/* Structured Data for SEO */}
+      <PricingStructuredData />
+      
+      <div className={styles.container} itemScope itemType="https://schema.org/Product">
+        <Navbar />
 
       {/* Hero Section */}
       <section className={styles.heroSection}>
@@ -213,7 +319,7 @@ export default function PricingPage() {
             </h1>
 
             <p className={styles.description}>
-              Transparent pricing with no hidden fees. Start with a 14-day free trial.
+              Transparent pricing with no hidden fees. Start with a 7-days free trial.
               No credit card required.
             </p>
 
@@ -242,7 +348,17 @@ export default function PricingPage() {
         <div className={styles.contentWrapper}>
           <div className={styles.pricingGrid}>
             {plans.map((plan, idx) => (
-              <div key={idx} className={styles.pricingCard}>
+              <article 
+                key={idx} 
+                className={styles.pricingCard}
+                itemScope
+                itemType="https://schema.org/Offer"
+                itemProp="offers"
+              >
+                <meta itemProp="name" content={plan.name} />
+                <meta itemProp="description" content={plan.description} />
+                <meta itemProp="priceCurrency" content="PKR" />
+                <meta itemProp="price" content={billingPeriod === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice} />
                 {plan.discount && (
                   <div className={styles.discountBadge}>-{plan.discount}% OFF</div>
                 )}
@@ -363,7 +479,7 @@ export default function PricingPage() {
                       })`,
                   }}
                 ></div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -396,6 +512,7 @@ export default function PricingPage() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 }

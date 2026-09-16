@@ -5,6 +5,149 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
+// Structured Data for How It Works Page
+function HowItWorksStructuredData() {
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Set Up and Use Gym Titan',
+    description: 'Complete guide to setting up and using Gym Titan gym management software',
+    image: 'https://gymtitan.codeverza.com/img/gym-logo.png',
+    totalTime: 'PT10M',
+    estimatedCost: {
+      '@type': 'MonetaryAmount',
+      currency: 'USD',
+      value: '0',
+    },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Sign Up & Setup',
+        text: 'Create your gym account and set up your gym details, logo, and branding',
+        itemListElement: [
+          {
+            '@type': 'HowToDirection',
+            text: 'Create your gym account in under 2 minutes',
+          },
+          {
+            '@type': 'HowToDirection',
+            text: 'Add your gym details, logo, and branding',
+          },
+          {
+            '@type': 'HowToDirection',
+            text: 'Migrate existing member data with our help',
+          },
+        ],
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Create Custom Roles',
+        text: 'Set up your team with role-based permissions for admins, receptionists, cashiers, managers, and trainers',
+        itemListElement: [
+          {
+            '@type': 'HowToDirection',
+            text: 'Create admin role with full control',
+          },
+          {
+            '@type': 'HowToDirection',
+            text: 'Add receptionists for registrations',
+          },
+          {
+            '@type': 'HowToDirection',
+            text: 'Set up cashiers for payment processing',
+          },
+        ],
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Manage Members & Operations',
+        text: 'Add members, create packages, track attendance, and automate billing',
+        itemListElement: [
+          {
+            '@type': 'HowToDirection',
+            text: 'Add new members with complete profiles',
+          },
+          {
+            '@type': 'HowToDirection',
+            text: 'Create membership packages',
+          },
+          {
+            '@type': 'HowToDirection',
+            text: 'Set up automated payment reminders',
+          },
+        ],
+      },
+      {
+        '@type': 'HowToStep',
+        position: 4,
+        name: 'Track Growth & Analytics',
+        text: 'Monitor your gym performance with real-time dashboard and comprehensive reports',
+        itemListElement: [
+          {
+            '@type': 'HowToDirection',
+            text: 'View real-time dashboard metrics',
+          },
+          {
+            '@type': 'HowToDirection',
+            text: 'Generate revenue reports',
+          },
+          {
+            '@type': 'HowToDirection',
+            text: 'Export data in PDF or Excel',
+          },
+        ],
+      },
+    ],
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://gymtitan.codeverza.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'How It Works',
+        item: 'https://gymtitan.codeverza.com/how-it-works',
+      },
+    ],
+  };
+
+  const videoObjectSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'How Gym Titan Works - Complete Tutorial',
+    description: '4-step guide to setting up and using Gym Titan gym management software',
+    thumbnailUrl: 'https://gymtitan.codeverza.com/img/gym-logo.png',
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoObjectSchema) }}
+      />
+    </>
+  );
+}
+
 export default function HowItWorksPage() {
   const steps = [
     {
@@ -68,11 +211,19 @@ export default function HowItWorksPage() {
   ];
 
   return (
-    <div className={styles.container}>
-      <Navbar />
+    <>
+      {/* Structured Data for SEO */}
+      <HowItWorksStructuredData />
+      
+      <div className={styles.container} itemScope itemType="https://schema.org/HowTo">
+        <Navbar />
 
-      {/* Hero Section */}
-      <section className={styles.heroSection}>
+        {/* Hero Section */}
+        <section 
+          className={styles.heroSection}
+          itemProp="name"
+          aria-label="How It Works Hero"
+        >
         <div className={styles.backgroundGlow}>
           <div className={styles.orangeGlow}></div>
           <div className={styles.cyanGlow}></div>
@@ -85,13 +236,13 @@ export default function HowItWorksPage() {
               <span className={styles.badgeText}>STEP BY STEP GUIDE</span>
             </div>
 
-            <h1 className={styles.heading}>
+            <h1 className={styles.heading} itemProp="headline">
               <span className='text-3xl md:text-4xl lg:text-5xl' style={{ color: 'white' }}>How </span>
               <span className={`${styles.headingGradient} text-3xl md:text-4xl lg:text-5xl`}>Gym Titan</span>
               <span className='text-3xl md:text-4xl lg:text-5xl' style={{ color: 'white' }}> Works</span>
             </h1>
 
-            <p className={styles.description}>
+            <p className={styles.description} itemProp="description">
               Get your gym up and running in 4 simple steps. From setup to advanced analytics,
               we make gym management effortless.
             </p>
@@ -100,11 +251,18 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Steps Section */}
-      <section className={styles.stepsSection}>
+      <section className={styles.stepsSection} itemProp="step" itemScope itemType="https://schema.org/HowToSection">
         <div className={styles.contentWrapper}>
           <div className={styles.stepsContainer}>
             {steps.map((step, idx) => (
-              <div key={idx} className={styles.stepWrapper}>
+              <div 
+                key={idx} 
+                className={styles.stepWrapper}
+                itemProp="step"
+                itemScope
+                itemType="https://schema.org/HowToStep"
+              >
+                <meta itemProp="position" content={step.number} />
                 <div className={styles.stepCard}>
                   <div
                     className={styles.stepNumber}
@@ -151,8 +309,8 @@ export default function HowItWorksPage() {
                       </svg>
                     </div>
 
-                    <h3 className={styles.stepTitle}>{step.title}</h3>
-                    <p className={styles.stepDescription}>{step.description}</p>
+                    <h3 className={styles.stepTitle} itemProp="name">{step.title}</h3>
+                    <p className={styles.stepDescription} itemProp="text">{step.description}</p>
 
                     <ul className={styles.featureList}>
                       {step.features.map((feature, fIdx) => (
@@ -230,6 +388,7 @@ export default function HowItWorksPage() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 }

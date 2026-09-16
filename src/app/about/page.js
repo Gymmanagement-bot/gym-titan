@@ -6,6 +6,128 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+// Structured Data for About Page
+function AboutStructuredData() {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Gym Titan',
+    alternateName: 'GymTitan',
+    url: 'https://gymtitan.codeverza.com',
+    logo: 'https://gymtitan.codeverza.com/img/gym-logo.png',
+    description: 'Complete gym management software solution for gym owners',
+    foundingDate: '2024',
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      value: '10-50',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'PK',
+      addressLocality: 'Pakistan',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+92-325-1507557',
+      contactType: 'Customer Service',
+      availableLanguage: ['English', 'Urdu'],
+      areaServed: 'PK',
+    },
+    sameAs: [
+      'https://www.facebook.com/share/1GaLoS57GL/',
+      'https://www.instagram.com/codeverza',
+      'https://codeverza.com',
+    ],
+    founder: {
+      '@type': 'Organization',
+      name: 'Codeverza',
+      url: 'https://codeverza.com',
+    },
+    knowsAbout: [
+      'Gym Management',
+      'Fitness Center Management',
+      'Member Management',
+      'Payment Processing',
+      'Gym Software',
+    ],
+  };
+
+  const aboutPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Gym Titan',
+    description: 'Learn about Gym Titan - complete gym management software trusted by 100+ gyms',
+    url: 'https://gymtitan.codeverza.com/about',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Gym Titan',
+    },
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://gymtitan.codeverza.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'About',
+        item: 'https://gymtitan.codeverza.com/about',
+      },
+    ],
+  };
+
+  const statsSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Gym Titan Achievements',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: '100+ Gyms Powered',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: '100+ Members Managed',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: '98% Satisfaction Rate',
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(statsSchema) }}
+      />
+    </>
+  );
+}
+
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -32,11 +154,20 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f]">
-      <Navbar />
+    <>
+      {/* Structured Data for SEO */}
+      <AboutStructuredData />
+      
+      <div className="min-h-screen bg-[#0a0a0f]" itemScope itemType="https://schema.org/AboutPage">
+        <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative pt-28 pb-12 overflow-hidden">
+        {/* Hero Section */}
+        <section 
+          className="relative pt-28 pb-12 overflow-hidden"
+          itemScope
+          itemType="https://schema.org/WPHeader"
+          aria-label="About Hero Section"
+        >
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute top-10 right-0 w-96 h-96 bg-orange-500/20 rounded-full blur-[150px]"></div>
@@ -50,13 +181,13 @@ export default function AboutPage() {
               <span className="text-orange-400 text-sm font-medium">ABOUT US</span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" itemProp="headline">
               <span className="text-white text-3xl md:text-4xl lg:text-5xl">About </span>
               <span className="text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300 bg-clip-text text-transparent">
                 Gym Titan
               </span>
             </h1>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed" itemProp="description">
               Empowering gym owners across India with intelligent management solutions
             </p>
           </div>
@@ -64,7 +195,15 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section ref={sectionRef} className="relative py-20 overflow-hidden">
+      <section 
+        ref={sectionRef} 
+        className="relative py-20 overflow-hidden"
+        itemScope
+        itemType="https://schema.org/Article"
+        aria-label="Our Story"
+      >
+        <meta itemProp="name" content="Why We Built Gym Titan" />
+        <meta itemProp="description" content="The story behind Gym Titan and how we help gym owners save 20+ hours weekly" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -110,7 +249,7 @@ export default function AboutPage() {
                 {[
                   { number: '100+', label: 'Gyms Powered', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
                   { number: '100+', label: 'Members Managed', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
-                  // { number: '₹10Cr+', label: 'Revenue Tracked', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+                  // { number: 'Rs10Cr+', label: 'Revenue Tracked', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
                   { number: '98%', label: 'Satisfaction Rate', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
                 ].map((stat, idx) => (
                   <div
@@ -160,7 +299,14 @@ export default function AboutPage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section 
+        className="relative py-20 overflow-hidden"
+        itemScope
+        itemType="https://schema.org/ItemList"
+        aria-label="Why Choose Gym Titan"
+      >
+        <meta itemProp="name" content="Why Choose Gym Titan" />
+        <meta itemProp="description" content="Three key reasons why Gym Titan is different from other gym management software" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full mb-6">
@@ -194,18 +340,25 @@ export default function AboutPage() {
                 color: 'from-orange-600 to-orange-500',
               },
             ].map((item, idx) => (
-              <div key={idx} className="relative group">
+              <article 
+                key={idx} 
+                className="relative group"
+                itemScope
+                itemType="https://schema.org/Thing"
+                itemProp="itemListElement"
+              >
+                <meta itemProp="position" content={String(idx + 1)} />
                 <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-8 hover:border-orange-500/50 transition-all duration-300 h-full">
                   <div className={`w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-xl`}>
                     <svg className="w-8 h-8 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d={item.icon} />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-4" itemProp="name">{item.title}</h3>
+                  <p className="text-gray-300 leading-relaxed" itemProp="description">{item.description}</p>
                 </div>
                 <div className={`absolute -inset-1 bg-gradient-to-r ${item.color} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-all duration-300 -z-10`}></div>
-              </div>
+              </article>
             ))}
           </div>
           {/* CTA Button */}
@@ -317,6 +470,7 @@ export default function AboutPage() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 }

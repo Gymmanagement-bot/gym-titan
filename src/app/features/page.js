@@ -1,9 +1,172 @@
 'use client';
 
 import Link from 'next/link';
+import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import styles from './page.module.css';
+
+// Structured Data for Features Page
+function FeaturesStructuredData() {
+  const featuresListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Gym Titan Features',
+    description: 'Complete list of gym management features',
+    numberOfItems: 12,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Member Management',
+        description: 'Complete member lifecycle management with automated workflows and smart tracking',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Payment & Billing',
+        description: 'Streamline payment collection with automated invoicing and multiple payment options',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Membership Packages',
+        description: 'Create flexible membership plans tailored to your gym business model',
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: 'Role-Based Access Control',
+        description: 'Secure multi-user system with customizable permissions for your team',
+      },
+      {
+        '@type': 'ListItem',
+        position: 5,
+        name: 'Automated Reminders',
+        description: 'Never miss renewals with smart automated communication system',
+      },
+      {
+        '@type': 'ListItem',
+        position: 6,
+        name: 'Reports & Analytics',
+        description: 'Make data-driven decisions with comprehensive business insights',
+      },
+    ],
+  };
+
+  const softwareFeaturesSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Gym Titan',
+    applicationCategory: 'BusinessApplication',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    featureList: [
+      'Member Management with Photo Upload',
+      'Payment & Billing Automation',
+      'Flexible Membership Packages',
+      'Role-Based Access Control',
+      'Automated Reminders via SMS & WhatsApp',
+      'Reports & Analytics Dashboard',
+      'Attendance Tracking with Biometric',
+      'Staff Management System',
+      'Expense Management',
+      'WhatsApp & SMS Integration',
+      'Mobile App for iOS & Android',
+      'Data Security with Daily Backups',
+    ],
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What features does Gym Titan offer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Gym Titan offers 12+ powerful features including Member Management, Payment & Billing, Membership Packages, Role-Based Access Control, Automated Reminders, Reports & Analytics, Attendance Tracking, Staff Management, Expense Management, WhatsApp & SMS Integration, Mobile Apps, and Data Security with automatic backups.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does Gym Titan support biometric attendance?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, Gym Titan supports multiple attendance tracking methods including biometric fingerprint integration, RFID card scanning, mobile app check-in, and manual attendance marking.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I send automated reminders to members?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, Gym Titan includes automated reminders for membership expiry, payment dues, and birthday wishes. You can send messages via SMS and WhatsApp with custom templates.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is there a mobile app for Gym Titan?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, Gym Titan provides dedicated mobile apps for both iOS and Android. Members can track workouts, staff can mark attendance, and all data syncs in real-time across devices.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How secure is my gym data?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Gym Titan ensures enterprise-grade security with daily automatic backups, encrypted data storage, secure cloud infrastructure, role-based access security, and 99.9% uptime guarantee.',
+        },
+      },
+    ],
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://gymtitan.codeverza.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Features',
+        item: 'https://gymtitan.codeverza.com/features',
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(featuresListSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareFeaturesSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
+  );
+}
 
 export default function FeaturesPage() {
   const features = [
@@ -178,11 +341,20 @@ export default function FeaturesPage() {
   ];
 
   return (
-    <div className={styles.container}>
-      <Navbar />
+    <>
+      {/* Structured Data for SEO */}
+      <FeaturesStructuredData />
+      
+      <div className={styles.container} itemScope itemType="https://schema.org/WebPage">
+        <Navbar />
 
-      {/* Hero Section */}
-      <section className={styles.heroSection}>
+        {/* Hero Section */}
+        <section 
+          className={styles.heroSection}
+          itemScope
+          itemType="https://schema.org/WPHeader"
+          aria-label="Features Hero Section"
+        >
         <div className={styles.backgroundGlow}>
           <div className={styles.orangeGlow}></div>
           <div className={styles.cyanGlow}></div>
@@ -195,12 +367,15 @@ export default function FeaturesPage() {
               <span className={styles.badgeText}>POWERFUL FEATURES</span>
             </div>
 
-            <h1 className={`${styles.heading} text-3xl md:text-4xl lg:text-5xl`}>
+            <h1 
+              className={`${styles.heading} text-3xl md:text-4xl lg:text-5xl`}
+              itemProp="headline"
+            >
               <span className='text-3xl md:text-4xl lg:text-5xl' style={{ color: 'white' }}>Everything You Need to </span>
               <span className={`${styles.headingGradient} text-3xl md:text-4xl lg:text-5xl`}>Manage Your Gym</span>
             </h1>
 
-            <p className={styles.description}>
+            <p className={styles.description} itemProp="description">
               From member management to analytics, Gym Titan provides all the tools you need
               to run a successful fitness business.
             </p>
@@ -209,11 +384,23 @@ export default function FeaturesPage() {
       </section>
 
       {/* Features Section */}
-      <section className={styles.featuresSection}>
+      <section 
+        className={styles.featuresSection}
+        itemScope
+        itemType="https://schema.org/ItemList"
+        aria-label="Gym Management Features"
+      >
         <div className={styles.contentWrapper}>
           <div className={styles.featuresGrid}>
             {features.map((feature, idx) => (
-              <div key={idx} className={styles.featureCard}>
+              <article 
+                key={idx} 
+                className={styles.featureCard}
+                itemScope
+                itemType="https://schema.org/Thing"
+                itemProp="itemListElement"
+              >
+                <meta itemProp="position" content={String(idx + 1)} />
                 <div className={styles.featureHeader}>
                   <div
                     className={styles.featureIcon}
@@ -241,10 +428,10 @@ export default function FeaturesPage() {
                       <path d={feature.icon} />
                     </svg>
                   </div>
-                  <h3 className={styles.featureTitle}>{feature.title}</h3>
+                  <h3 className={styles.featureTitle} itemProp="name">{feature.title}</h3>
                 </div>
 
-                <p className={styles.featureDescription}>{feature.description}</p>
+                <p className={styles.featureDescription} itemProp="description">{feature.description}</p>
 
                 <ul className={styles.featureList}>
                   {feature.items.map((item, itemIdx) => (
@@ -280,14 +467,19 @@ export default function FeaturesPage() {
                     })`,
                   }}
                 ></div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className={styles.ctaSection}>
+      <section 
+        className={styles.ctaSection}
+        itemScope
+        itemType="https://schema.org/WPAdBlock"
+        aria-label="Call to Action"
+      >
         <div className={styles.backgroundGlow}>
           <div className={styles.orangeGlow} style={{ top: '50%', left: 0 }}></div>
           <div className={styles.cyanGlow} style={{ top: '50%', right: 0 }}></div>
@@ -320,6 +512,7 @@ export default function FeaturesPage() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 }
