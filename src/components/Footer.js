@@ -91,7 +91,7 @@ export default function Footer() {
       // { name: 'Blog', href: '#blog' },
     ],
     support: [
-      { name: 'Help Center', href: '#help' },
+      { name: 'Help Center', href: '/contact' },
       // { name: 'Documentation', href: '#docs' },
       // { name: 'API Reference', href: '#api' },
       // { name: 'System Status', href: '#status' },
